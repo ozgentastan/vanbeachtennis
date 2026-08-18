@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Draws &amp; Results — Vancouver Beach Tennis Open 2026</title>
-<meta name="description" content="Group standings, match results, playoff brackets and order of play for the Vancouver Beach Tennis Open 2026 at Locarno Beach." />
+<meta name="description" content="Live standings, brackets, court board and match schedule for the Vancouver Beach Tennis Open 2026 at Locarno Beach." />
 
 <meta name="theme-color" content="#3F1E63" />
 <link rel="canonical" href="https://vanbeachtennis.ca/open2026" />
@@ -12,11 +12,11 @@
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="Vancouver Beach Tennis Club" />
 <meta property="og:title" content="Draws & Results — Vancouver Beach Tennis Open 2026" />
-<meta property="og:description" content="Live standings, brackets and order of play. 43 teams, 6 divisions, August 22–23 at Locarno Beach." />
+<meta property="og:description" content="Live standings, brackets and court schedule. 43 teams, 6 divisions, August 22–23 at Locarno Beach." />
 <meta property="og:url" content="https://vanbeachtennis.ca/open2026" />
 <meta name="twitter:card" content="summary_large_image" />
 <meta name="twitter:title" content="Draws & Results — Vancouver Beach Tennis Open 2026" />
-<meta name="twitter:description" content="Live standings, brackets and order of play. 43 teams, 6 divisions, August 22–23 at Locarno Beach." />
+<meta name="twitter:description" content="Live standings, brackets and court schedule. 43 teams, 6 divisions, August 22–23 at Locarno Beach." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -41,6 +41,7 @@
 
   --mh:5.6rem;
   --mg:3rem;
+  --navh:58px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -63,73 +64,31 @@ img{max-width:100%;display:block}
 /* ---------- NAV ---------- */
 header.nav{
   position:fixed;top:0;left:0;right:0;z-index:100;
-  background:rgba(255,255,255,0.96);
+  background:rgba(255,255,255,0.97);
   backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);
   border-bottom:1px solid var(--line);
+  height:var(--navh);
 }
-.nav-inner{max-width:1400px;margin:0 auto;padding:0.95rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:2rem}
-.brand{display:flex;align-items:center;gap:0.7rem;font-family:"Anton",sans-serif;font-size:1.05rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink)}
-.brand-logo{width:42px;height:42px;border-radius:50%;background:var(--white) center/cover no-repeat;border:1.5px solid var(--line);flex-shrink:0}
-.brand-text{line-height:1;display:flex;flex-direction:column;gap:3px}
-.brand-text small{font-family:"Manrope",sans-serif;font-size:0.6rem;letter-spacing:0.22em;font-weight:600;color:var(--purple);text-transform:uppercase}
-.nav-actions{display:flex;align-items:center;gap:1.5rem}
-.nav-back{font-size:0.78rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:600;color:var(--ink-soft);transition:color .25s}
-.nav-back:hover{color:var(--purple)}
-.btn-nav{
-  background:var(--purple);color:var(--white);
-  padding:0.7rem 1.3rem;border-radius:999px;
-  font-size:0.75rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;
-  transition:all .3s ease;
-}
-.btn-nav:hover{background:var(--ink);transform:translateY(-1px)}
+.nav-inner{max-width:1400px;margin:0 auto;height:100%;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.brand{display:flex;align-items:center;gap:0.6rem;font-family:"Anton",sans-serif;font-size:0.92rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink)}
+.brand-logo{width:32px;height:32px;border-radius:50%;background:var(--white) center/cover no-repeat;border:1.5px solid var(--line);flex-shrink:0}
+.brand-text{line-height:1;display:flex;flex-direction:column;gap:2px}
+.brand-text small{font-family:"Manrope",sans-serif;font-size:0.55rem;letter-spacing:0.2em;font-weight:700;color:var(--purple);text-transform:uppercase}
+.nav-actions{display:flex;align-items:center;gap:0.75rem}
 
-/* ---------- HERO ---------- */
-.hero{
-  margin-top:74px;
-  background:var(--purple-deep);
-  color:var(--white);
-  padding:4.5rem 2rem 3.25rem;
-  position:relative;overflow:hidden;
+.seg{display:inline-flex;background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:3px;gap:2px}
+.seg button{
+  border:none;background:none;cursor:pointer;font-family:"Manrope",sans-serif;
+  font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;
+  color:var(--grey);padding:0.42rem 0.9rem;border-radius:999px;transition:all .2s ease;white-space:nowrap;
 }
-.hero::after{
-  content:"";position:absolute;right:-6rem;bottom:-9rem;
-  width:26rem;height:26rem;border-radius:50%;
-  border:2px solid rgba(255,255,255,0.09);
-}
-.hero-inner{max-width:1300px;margin:0 auto;position:relative;z-index:2}
-.hero .eyebrow{color:var(--coral);margin-bottom:1.1rem}
-.hero h1{font-size:clamp(2.8rem,8vw,6rem);margin-bottom:1.75rem}
-.hero h1 em{font-style:normal;color:var(--coral)}
-.hero-meta{
-  display:flex;flex-wrap:wrap;gap:0 2.5rem;
-  padding-top:1.5rem;border-top:2px solid rgba(255,255,255,0.18);
-}
-.hero-meta div{padding:0.4rem 0}
-.hero-meta dt{font-size:0.66rem;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;color:rgba(255,255,255,0.55);margin-bottom:0.2rem}
-.hero-meta dd{font-size:1rem;font-weight:700}
+.seg button[aria-selected="true"]{background:var(--ink);color:var(--white)}
 
-/* ---------- TABS ---------- */
-.tabs-wrap{border-bottom:1px solid var(--line);background:var(--white);position:sticky;top:74px;z-index:60}
-.tabs-inner{max-width:1300px;margin:0 auto;padding:1.1rem 2rem;display:flex;align-items:center;gap:1.5rem;flex-wrap:wrap}
-.tabs-label{font-size:0.66rem;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;color:var(--grey)}
-.tabs{display:flex;gap:0.5rem;flex-wrap:wrap}
-.tab{
-  border:1.5px solid var(--line);background:var(--white);
-  font-family:"Manrope",sans-serif;font-size:0.76rem;font-weight:700;
-  letter-spacing:0.1em;text-transform:uppercase;color:var(--ink-soft);
-  padding:0.6rem 1.05rem;border-radius:999px;cursor:pointer;
-  display:inline-flex;align-items:center;gap:0.5rem;transition:all .2s ease;
-}
-.tab:hover{border-color:var(--purple-soft);color:var(--purple)}
-.tab .dot{width:7px;height:7px;border-radius:50%;flex-shrink:0}
-.tab[data-day="Saturday"] .dot{background:var(--coral)}
-.tab[data-day="Sunday"] .dot{background:var(--teal)}
-.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
 .feed{
-  margin-left:auto;display:inline-flex;align-items:center;gap:0.5rem;cursor:pointer;
-  font-family:"Manrope",sans-serif;font-size:0.68rem;letter-spacing:0.12em;text-transform:uppercase;
-  font-weight:700;padding:0.5rem 0.9rem;border-radius:999px;border:1.5px solid var(--line);
-  background:var(--white);color:var(--grey);transition:all .2s ease;
+  display:inline-flex;align-items:center;gap:0.45rem;cursor:pointer;
+  font-family:"Manrope",sans-serif;font-size:0.64rem;letter-spacing:0.1em;text-transform:uppercase;
+  font-weight:700;padding:0.4rem 0.75rem;border-radius:999px;border:1.5px solid var(--line);
+  background:var(--white);color:var(--grey);transition:all .2s ease;white-space:nowrap;
 }
 .feed:hover{border-color:var(--purple-soft);color:var(--purple)}
 .feed .pulse{width:7px;height:7px;border-radius:50%;background:var(--wire);flex-shrink:0}
@@ -140,91 +99,129 @@ header.nav{
 .feed.loading .pulse{background:var(--purple-soft)}
 @keyframes beat{0%,100%{opacity:1}50%{opacity:0.25}}
 
-/* ---------- MAIN ---------- */
-main{max-width:1300px;margin:0 auto;padding:3.5rem 2rem 5rem}
+/* ---------- SLIM EVENT STRIP ---------- */
+.strip{
+  margin-top:var(--navh);background:var(--purple-deep);color:var(--white);
+  padding:0.6rem 1.5rem;
+}
+.strip-inner{
+  max-width:1400px;margin:0 auto;display:flex;align-items:center;gap:0.55rem 1.4rem;flex-wrap:wrap;
+  font-size:0.68rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;
+  color:rgba(255,255,255,0.72);
+}
+.strip-inner b{color:var(--white);font-weight:800}
+.strip-inner .sep{color:rgba(255,255,255,0.28)}
+.strip-inner .accent{color:var(--coral)}
 
-.div-head{display:flex;justify-content:space-between;align-items:flex-end;gap:2rem;flex-wrap:wrap;margin-bottom:1.75rem}
-.div-head h2{font-family:"Anton",sans-serif;font-size:clamp(2rem,5vw,3.2rem);line-height:0.95;text-transform:uppercase}
-.div-tagline{color:var(--ink-soft);font-weight:500;max-width:38rem;margin-top:0.6rem}
+/* ---------- TABS ---------- */
+.tabs-wrap{border-bottom:1px solid var(--line);background:var(--white);position:sticky;top:var(--navh);z-index:60}
+.tabs-inner{max-width:1400px;margin:0 auto;padding:0.75rem 1.5rem;display:flex;align-items:center;gap:1.25rem}
+.tabs-label{font-size:0.62rem;letter-spacing:0.26em;text-transform:uppercase;font-weight:700;color:var(--grey);flex-shrink:0}
+.tabs{display:flex;gap:0.4rem;flex-wrap:wrap}
+.tab{
+  border:1.5px solid var(--line);background:var(--white);
+  font-family:"Manrope",sans-serif;font-size:0.72rem;font-weight:700;
+  letter-spacing:0.08em;text-transform:uppercase;color:var(--ink-soft);
+  padding:0.45rem 0.9rem;border-radius:999px;cursor:pointer;
+  display:inline-flex;align-items:center;justify-content:center;gap:0.45rem;transition:all .2s ease;
+}
+.tab:hover{border-color:var(--purple-soft);color:var(--purple)}
+.tab .dot{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.tab[data-code="MXAB"] .dot{background:#5B2D8C}
+.tab[data-code="MXCD"] .dot{background:#A32C79}
+.tab[data-code="WMAB"] .dot{background:#C9600C}
+.tab[data-code="WMCD"] .dot{background:#96700A}
+.tab[data-code="MNAB"] .dot{background:#1F7A6E}
+.tab[data-code="MNCD"] .dot{background:#2A5FA8}
+.tab[data-day="Saturday"] .dot{background:var(--coral)}
+.tab[data-day="Sunday"] .dot{background:var(--teal)}
+.tab[aria-selected="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+
+/* ---------- MAIN ---------- */
+main{max-width:1400px;margin:0 auto;padding:2rem 1.5rem 4rem}
+
+.div-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.div-head h2{font-family:"Anton",sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:0.95;text-transform:uppercase}
+.div-tagline{color:var(--ink-soft);font-weight:500;max-width:38rem;margin-top:0.45rem;font-size:0.92rem}
 .chip{
   display:inline-flex;align-items:center;gap:0.5rem;
-  font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;
-  padding:0.5rem 0.9rem;border-radius:999px;white-space:nowrap;
+  font-size:0.66rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;
+  padding:0.42rem 0.8rem;border-radius:999px;white-space:nowrap;
 }
 .chip-sat{background:#FDF0E4;color:var(--coral-deep)}
 .chip-sun{background:#E4F4F1;color:var(--teal-deep)}
 .chip-status{background:var(--paper);color:var(--ink-soft);border:1px solid var(--line)}
 
 .block-title{
-  font-size:0.7rem;letter-spacing:0.3em;text-transform:uppercase;font-weight:700;
-  color:var(--grey);display:flex;align-items:center;gap:0.9rem;margin-bottom:1.25rem;
+  font-size:0.68rem;letter-spacing:0.28em;text-transform:uppercase;font-weight:700;
+  color:var(--grey);display:flex;align-items:center;gap:0.9rem;margin-bottom:1.1rem;
 }
 .block-title::after{content:"";flex:1;height:1px;background:var(--line)}
 
 .block-toggle{
   width:100%;background:none;border:none;padding:0;cursor:pointer;text-align:left;
-  font-family:"Manrope",sans-serif;font-size:0.7rem;letter-spacing:0.3em;
+  font-family:"Manrope",sans-serif;font-size:0.68rem;letter-spacing:0.28em;
   text-transform:uppercase;font-weight:700;color:var(--grey);
-  display:flex;align-items:center;gap:0.9rem;margin-bottom:1.25rem;
+  display:flex;align-items:center;gap:0.9rem;margin-bottom:1.1rem;
 }
 .block-toggle:hover{color:var(--purple)}
 .block-toggle .line{flex:1;height:1px;background:var(--line)}
-.block-toggle .hint{letter-spacing:0.12em;font-size:0.66rem;color:var(--purple);white-space:nowrap;font-weight:700}
+.block-toggle .hint{letter-spacing:0.1em;font-size:0.64rem;color:var(--purple);white-space:nowrap;font-weight:700}
 .block-toggle .chev{
-  width:1.55rem;height:1.55rem;border:1.5px solid var(--line);border-radius:50%;
-  display:grid;place-items:center;font-size:0.6rem;color:var(--ink-soft);
+  width:1.5rem;height:1.5rem;border:1.5px solid var(--line);border-radius:50%;
+  display:grid;place-items:center;font-size:0.58rem;color:var(--ink-soft);
   transition:transform .25s ease,border-color .25s ease,color .25s ease;flex-shrink:0;
 }
 .block-toggle[aria-expanded="true"] .chev{transform:rotate(180deg);border-color:var(--purple-soft);color:var(--purple)}
-.block-toggle[aria-expanded="false"]{margin-bottom:3rem}
-.panel{margin-bottom:4rem}
+.block-toggle[aria-expanded="false"]{margin-bottom:2.5rem}
+.panel{margin-bottom:3.5rem}
 .panel[hidden]{display:none}
 
 /* ---------- GROUPS ---------- */
-.groups{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;margin-bottom:4rem}
+.groups{display:grid;grid-template-columns:1fr 1fr;gap:2.25rem;margin-bottom:3rem}
 .groups.single{grid-template-columns:1fr;max-width:640px}
 .group-card{border:1.5px solid var(--line);border-radius:4px;overflow:hidden;background:var(--white)}
 .group-head{
   background:var(--paper);border-bottom:1.5px solid var(--line);
-  padding:0.95rem 1.15rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;
+  padding:0.85rem 1.1rem;display:flex;justify-content:space-between;align-items:center;gap:1rem;
 }
-.group-head h3{font-family:"Anton",sans-serif;font-size:1.05rem;letter-spacing:0.08em;text-transform:uppercase}
-.group-head span{font-size:0.66rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--grey);text-align:right}
+.group-head h3{font-family:"Anton",sans-serif;font-size:1rem;letter-spacing:0.08em;text-transform:uppercase}
+.group-head span{font-size:0.64rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--grey);text-align:right}
 
 table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 thead th{
-  font-size:0.62rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:700;
-  color:var(--grey);text-align:right;padding:0.7rem 0.5rem;border-bottom:1px solid var(--line);
+  font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;
+  color:var(--grey);text-align:right;padding:0.65rem 0.5rem;border-bottom:1px solid var(--line);
 }
-thead th:first-child{text-align:left;padding-left:1.15rem;width:2.4rem}
+thead th:first-child{text-align:left;padding-left:1.1rem;width:2.2rem}
 thead th:nth-child(2){text-align:left}
-thead th:last-child{padding-right:1.15rem}
-tbody td{padding:0.8rem 0.5rem;text-align:right;font-size:0.9rem;font-weight:600;border-bottom:1px solid var(--line)}
+thead th:last-child{padding-right:1.1rem}
+tbody td{padding:0.72rem 0.5rem;text-align:right;font-size:0.88rem;font-weight:600;border-bottom:1px solid var(--line)}
 tbody tr:last-child td{border-bottom:none}
-tbody td:first-child{text-align:left;padding-left:1.15rem;color:var(--grey);font-size:0.78rem}
+tbody td:first-child{text-align:left;padding-left:1.1rem;color:var(--grey);font-size:0.76rem}
 tbody td:nth-child(2){text-align:left;font-weight:700}
-tbody td:last-child{padding-right:1.15rem}
+tbody td:last-child{padding-right:1.1rem}
 tbody tr.qualified td:first-child{
-  padding-left:calc(1.15rem - 4px);border-left:4px solid var(--purple);color:var(--purple);
+  padding-left:calc(1.1rem - 4px);border-left:4px solid var(--purple);color:var(--purple);
 }
 tbody tr.qualified{background:#F8F4FD}
 td.pts{color:var(--ink);font-weight:800}
 td.diff-pos{color:var(--teal-deep)}
 td.diff-neg{color:var(--grey)}
-.seed{font-size:0.68rem;color:var(--grey);font-weight:600;margin-left:0.45rem}
+.seed{font-size:0.66rem;color:var(--grey);font-weight:600;margin-left:0.4rem}
 
 .qual-note{
-  padding:0.75rem 1.15rem;font-size:0.72rem;font-weight:600;color:var(--grey);
+  padding:0.7rem 1.1rem;font-size:0.7rem;font-weight:600;color:var(--grey);
   background:var(--paper);border-top:1.5px solid var(--line);
-  display:flex;align-items:center;gap:0.55rem;
+  display:flex;align-items:center;gap:0.5rem;
 }
 .qual-note::before{content:"";width:4px;height:14px;background:var(--purple);flex-shrink:0}
 
-.results{margin-top:1.1rem}
-.results h4{font-size:0.64rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:700;color:var(--grey);margin-bottom:0.6rem}
+.results{margin-top:1rem}
+.results h4{font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--grey);margin-bottom:0.55rem}
 .result-row{
-  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0.75rem;
-  padding:0.5rem 0;border-bottom:1px solid var(--line);font-size:0.82rem;font-weight:600;
+  display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:0.7rem;
+  padding:0.45rem 0;border-bottom:1px solid var(--line);font-size:0.8rem;font-weight:600;
 }
 .result-row:last-child{border-bottom:none}
 .result-row .rt{color:var(--ink-soft)}
@@ -232,25 +229,25 @@ td.diff-neg{color:var(--grey)}
 .result-row .win{color:var(--ink);font-weight:800}
 .result-row .score{
   font-weight:800;font-variant-numeric:tabular-nums;background:var(--paper);
-  border-radius:3px;padding:0.15rem 0.55rem;min-width:3.6rem;text-align:center;font-size:0.8rem;
+  border-radius:3px;padding:0.15rem 0.5rem;min-width:3.4rem;text-align:center;font-size:0.78rem;
 }
 .result-row .score.pending{color:var(--grey);font-weight:600}
 
 /* ---------- BRACKET ---------- */
-.bracket{display:grid;grid-template-columns:1fr 1fr 0.85fr;gap:0 3rem;align-items:center;padding:1rem 0 0}
+.bracket{display:grid;grid-template-columns:1fr 1fr 0.85fr;gap:0 3rem;align-items:center;padding:0.5rem 0 0}
 .bracket.short{grid-template-columns:1fr 0.85fr}
 .rd{display:flex;flex-direction:column;gap:var(--mg);position:relative}
-.rd-label{font-size:0.64rem;letter-spacing:0.26em;text-transform:uppercase;font-weight:700;color:var(--grey);margin-bottom:1rem;text-align:center}
+.rd-label{font-size:0.62rem;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;color:var(--grey);margin-bottom:0.9rem;text-align:center}
 .match{border:1.5px solid var(--line);border-radius:4px;height:var(--mh);display:flex;flex-direction:column;position:relative;background:var(--white)}
 .match .slot:first-child{border-radius:3px 3px 0 0}
 .match .slot:last-child{border-radius:0 0 3px 3px}
 .slot{
   flex:1;display:grid;grid-template-columns:1.9rem 1fr auto;align-items:center;gap:0.6rem;
-  padding:0 0.85rem;font-size:0.86rem;font-weight:600;color:var(--ink-soft);
+  padding:0 0.85rem;font-size:0.85rem;font-weight:600;color:var(--ink-soft);
 }
 .slot + .slot{border-top:1px solid var(--line)}
-.slot .src{font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);font-weight:700}
-.slot .sc{font-variant-numeric:tabular-nums;font-weight:800;color:var(--grey);font-size:0.82rem;word-spacing:0.4em;letter-spacing:0.02em}
+.slot .src{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);font-weight:700}
+.slot .sc{font-variant-numeric:tabular-nums;font-weight:800;color:var(--grey);font-size:0.8rem;word-spacing:0.4em;letter-spacing:0.02em}
 .slot.won{background:#F8F4FD;color:var(--ink);font-weight:800}
 .slot.won .sc{color:var(--purple)}
 .slot.tbd{color:var(--grey);font-weight:600}
@@ -264,106 +261,230 @@ td.diff-neg{color:var(--grey)}
 .rd-final .match::before{content:"";position:absolute;top:50%;right:100%;width:1.5rem;height:2px;background:var(--wire)}
 .rd-final .match::after{content:"";position:absolute;top:50%;left:100%;width:1.5rem;height:2px;background:var(--wire)}
 .bracket.short .rd-final .match::before{display:none}
-.champion{background:var(--purple-deep);color:var(--white);border-radius:4px;padding:1.5rem 1.4rem;display:flex;flex-direction:column;gap:0.5rem}
-.champion .eyebrow{color:var(--coral);font-size:0.62rem}
-.champion strong{font-family:"Anton",sans-serif;font-size:1.35rem;letter-spacing:0.03em;text-transform:uppercase;line-height:1.05}
+.champion{background:var(--purple-deep);color:var(--white);border-radius:4px;padding:1.4rem 1.3rem;display:flex;flex-direction:column;gap:0.5rem}
+.champion .eyebrow{color:var(--coral);font-size:0.6rem}
+.champion strong{font-family:"Anton",sans-serif;font-size:1.3rem;letter-spacing:0.03em;text-transform:uppercase;line-height:1.05}
 .champion.empty strong{color:rgba(255,255,255,0.4)}
-.champion .runner{font-size:0.78rem;font-weight:600;color:rgba(255,255,255,0.7);border-top:1px solid rgba(255,255,255,0.18);padding-top:0.55rem;margin-top:0.2rem}
+.champion .runner{font-size:0.76rem;font-weight:600;color:rgba(255,255,255,0.7);border-top:1px solid rgba(255,255,255,0.18);padding-top:0.5rem;margin-top:0.2rem}
 
-/* ---------- PLACEMENT ---------- */
-.placement{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem;margin-bottom:1.25rem}
+/* ---------- PLACEMENT / REPECHAGE ---------- */
+.placement{display:grid;grid-template-columns:repeat(auto-fit,minmax(290px,1fr));gap:1.15rem;margin-bottom:1.15rem}
 .pmatch{border:1.5px solid var(--line);border-radius:4px;background:var(--white);overflow:hidden;display:flex;flex-direction:column}
-.pmatch-head{min-height:2.4rem;align-items:center}
 .pmatch-head{
-  background:var(--paper);border-bottom:1px solid var(--line);padding:0.6rem 0.95rem;
-  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700;color:var(--grey);
-  display:flex;justify-content:space-between;gap:0.75rem;
+  background:var(--paper);border-bottom:1px solid var(--line);padding:0.55rem 0.9rem;min-height:2.3rem;
+  font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700;color:var(--grey);
+  display:flex;justify-content:space-between;align-items:center;gap:0.75rem;
 }
 .pmatch-head .fmt{color:var(--coral-deep)}
-.pslot{display:grid;grid-template-columns:2.4rem 1fr auto;align-items:center;gap:0.6rem;padding:0.65rem 0.95rem;font-size:0.86rem;font-weight:600;color:var(--ink-soft)}
+.pslot{display:grid;grid-template-columns:2.4rem 1fr auto;align-items:center;gap:0.6rem;padding:0.6rem 0.9rem;font-size:0.85rem;font-weight:600;color:var(--ink-soft)}
 .pslot + .pslot{border-top:1px solid var(--line)}
-.pslot .src{font-size:0.62rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);font-weight:700}
-.pslot .sc{font-variant-numeric:tabular-nums;font-weight:800;color:var(--grey);font-size:0.82rem}
+.pslot .src{font-size:0.6rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--grey);font-weight:700}
+.pslot .sc{font-variant-numeric:tabular-nums;font-weight:800;color:var(--grey);font-size:0.8rem}
 .pslot.won{background:#F8F4FD;color:var(--ink);font-weight:800}
 .pslot.won .sc{color:var(--purple)}
 .pslot.tbd{color:var(--grey);font-weight:600}
 .note{
-  font-size:0.78rem;color:var(--grey);font-weight:600;
-  border-left:3px solid var(--line);padding:0.15rem 0 0.15rem 0.85rem;margin-bottom:3.5rem;
+  font-size:0.76rem;color:var(--grey);font-weight:600;
+  border-left:3px solid var(--line);padding:0.15rem 0 0.15rem 0.8rem;margin-bottom:3rem;
+}
+.sub-block{margin-top:2.5rem}
+
+/* ---------- SCHEDULE ---------- */
+.sched-head{display:flex;justify-content:space-between;align-items:flex-end;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.5rem}
+.sched-head h2{font-family:"Anton",sans-serif;font-size:clamp(1.7rem,4vw,2.6rem);line-height:0.95;text-transform:uppercase}
+.sched-head p{color:var(--ink-soft);font-weight:500;max-width:40rem;margin-top:0.45rem;font-size:0.9rem}
+
+.courts{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:0.7rem;margin-bottom:2.75rem}
+.court{border:1.5px solid var(--line);border-radius:5px;overflow:hidden;background:var(--white);display:flex;flex-direction:column}
+.court.active{border-color:var(--teal);box-shadow:0 0 0 3px #E4F4F1}
+.court-head{
+  background:var(--ink);color:var(--white);padding:0.5rem 0.8rem;
+  display:flex;justify-content:space-between;align-items:center;gap:0.6rem;
+  font-size:0.62rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:800;
+}
+.court-head .prog{color:rgba(255,255,255,0.55);letter-spacing:0.08em;font-weight:700}
+.court-now{padding:0.7rem 0.8rem;border-bottom:1px dashed var(--line)}
+.court-next{padding:0.6rem 0.8rem;background:var(--paper)}
+.court-lab{font-size:0.56rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:800;color:var(--grey);margin-bottom:0.3rem;display:flex;align-items:center;gap:0.35rem}
+.court-lab.on{color:var(--teal-deep)}
+.court-lab .pulse{width:6px;height:6px;border-radius:50%;background:var(--teal);animation:beat 2s ease-in-out infinite}
+.court-team{font-size:0.86rem;font-weight:700;color:var(--ink);line-height:1.35}
+.court-team.tbd{color:var(--grey);font-weight:600}
+.court-meta{font-size:0.66rem;font-weight:700;color:var(--grey);margin-top:0.25rem;letter-spacing:0.04em}
+.court-idle{padding:1.1rem 0.8rem;font-size:0.74rem;font-weight:700;color:var(--grey);text-align:center}
+
+.filters{display:flex;flex-wrap:wrap;gap:0.6rem;align-items:center;margin-bottom:1.5rem}
+.filters select,.filters input{
+  font-family:"Manrope",sans-serif;font-size:0.78rem;font-weight:600;color:var(--ink);
+  border:1.5px solid var(--line);border-radius:999px;padding:0.5rem 0.9rem;background:var(--white);
+  min-height:2.4rem;
+}
+.filters input{min-width:12rem;flex:1;max-width:20rem}
+.filters .fbtn{
+  font-family:"Manrope",sans-serif;font-size:0.66rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;
+  border:1.5px solid var(--line);border-radius:999px;padding:0.55rem 0.95rem;background:var(--white);
+  color:var(--grey);cursor:pointer;transition:all .2s ease;
+}
+.filters .fbtn[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--white)}
+.filters .fbtn.clear:hover{border-color:var(--purple-soft);color:var(--purple)}
+
+.gridwrap{overflow-x:auto;-webkit-overflow-scrolling:touch;padding-bottom:0.5rem}
+.cgrid{display:grid;grid-template-columns:4.4rem repeat(6,minmax(158px,1fr));gap:5px;min-width:1060px}
+.chead{
+  font-size:0.6rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:800;color:var(--white);
+  background:var(--purple);padding:0.5rem 0.6rem;border-radius:4px;text-align:center;
+}
+.chead.time{background:var(--ink)}
+.ctime{
+  font-size:0.74rem;font-weight:800;color:var(--purple);font-variant-numeric:tabular-nums;
+  display:flex;align-items:center;justify-content:center;background:var(--paper);border-radius:4px;
+}
+.cell{
+  border:1.5px solid var(--line);border-radius:4px;background:var(--white);
+  padding:0.45rem 0.55rem;font-size:0.74rem;min-height:4.6rem;display:flex;flex-direction:column;gap:0.2rem;
+}
+.cell.empty{border-style:dashed;background:transparent;opacity:0.4;min-height:2.2rem}
+.cell.done{background:var(--paper)}
+.cell.live{border-color:var(--teal);box-shadow:0 0 0 2px #E4F4F1}
+.cell.dim{opacity:0.25}
+.cell-top{display:flex;justify-content:space-between;align-items:center;gap:0.4rem}
+.tag{
+  font-size:0.53rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:800;
+  padding:0.15rem 0.4rem;border-radius:3px;white-space:nowrap;
+}
+.tag.mxab{background:#EFE3FB;color:#5B2D8C}
+.tag.mxcd{background:#FBE4F1;color:#A32C79}
+.tag.wmab{background:#FDEADB;color:#C9600C}
+.tag.wmcd{background:#FAF0D6;color:#96700A}
+.tag.mnab{background:#DEF2EE;color:#1F7A6E}
+.tag.mncd{background:#E2EBFA;color:#2A5FA8}
+.state{font-size:0.53rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:800;color:var(--grey)}
+.state.on{color:var(--teal-deep)}
+.state.fin{color:var(--purple)}
+.cell-row{display:flex;justify-content:space-between;gap:0.5rem;font-weight:700;color:var(--ink);line-height:1.3}
+.cell-row.tbd{color:var(--grey);font-weight:600}
+.cell-row .n{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.cell-row .s{font-variant-numeric:tabular-nums;font-weight:800;color:var(--grey);flex-shrink:0}
+.cell-row.w{color:var(--ink)}
+.cell-row.w .s{color:var(--purple)}
+.cell-stage{font-size:0.58rem;letter-spacing:0.08em;text-transform:uppercase;font-weight:700;color:var(--grey);margin-top:auto}
+
+.clist{display:none;flex-direction:column;gap:1.4rem}
+.cslot h4{
+  font-family:"Anton",sans-serif;font-size:1.05rem;letter-spacing:0.06em;text-transform:uppercase;
+  color:var(--purple);margin-bottom:0.6rem;display:flex;align-items:center;gap:0.7rem;
+}
+.cslot h4::after{content:"";flex:1;height:1px;background:var(--line)}
+.crow{
+  border:1.5px solid var(--line);border-radius:4px;background:var(--white);
+  padding:0.6rem 0.75rem;margin-bottom:0.55rem;display:flex;flex-direction:column;gap:0.25rem;
+}
+.crow.done{background:var(--paper)}
+.crow.live{border-color:var(--teal);box-shadow:0 0 0 2px #E4F4F1}
+.crow-top{display:flex;align-items:center;gap:0.45rem;flex-wrap:wrap}
+.courtbadge{
+  font-size:0.55rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:800;
+  background:var(--ink);color:var(--white);padding:0.18rem 0.45rem;border-radius:3px;
+}
+.empty-state{
+  border:1.5px dashed var(--line);border-radius:5px;padding:2.5rem 1.5rem;text-align:center;
+  color:var(--grey);font-weight:600;font-size:0.85rem;
 }
 
-/* ---------- ORDER OF PLAY ---------- */
-.oop{border-top:1px solid var(--line);background:var(--white);padding:4rem 2rem}
-.oop-inner{max-width:1300px;margin:0 auto}
-.oop h2{font-family:"Anton",sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);text-transform:uppercase;margin-bottom:0.6rem}
-.oop .lede{color:var(--ink-soft);font-weight:500;max-width:44rem;margin-bottom:2.5rem}
-.days{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem}
-.day-card{border:1.5px solid var(--line);border-radius:4px;overflow:hidden}
-.day-head{padding:1.1rem 1.25rem;color:var(--white)}
-.day-head.sat{background:var(--coral-deep)}
-.day-head.sun{background:var(--teal-deep)}
-.day-head h3{font-family:"Anton",sans-serif;font-size:1.3rem;letter-spacing:0.06em;text-transform:uppercase;line-height:1}
-.day-head p{font-size:0.76rem;font-weight:600;color:rgba(255,255,255,0.8);margin-top:0.35rem}
-.slot-row{display:grid;grid-template-columns:5.4rem 1fr;gap:1rem;padding:0.75rem 1.25rem;border-bottom:1px solid var(--line);font-size:0.85rem}
-.slot-row:last-child{border-bottom:none}
-.slot-row .t{font-weight:800;font-variant-numeric:tabular-nums;color:var(--purple)}
-.slot-row .d{font-weight:600;color:var(--ink-soft)}
-.slot-row.key{background:var(--paper)}
-.slot-row.key .d{color:var(--ink);font-weight:800}
-
-/* ---------- FORMAT ---------- */
-.format{background:var(--paper);border-top:1px solid var(--line);padding:4rem 2rem}
-.format-inner{max-width:1300px;margin:0 auto}
-.format h2{font-family:"Anton",sans-serif;font-size:clamp(1.6rem,3.5vw,2.4rem);text-transform:uppercase;margin-bottom:2rem}
-.format-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:2rem}
-.format-item h5{font-size:0.66rem;letter-spacing:0.24em;text-transform:uppercase;font-weight:700;color:var(--purple);margin-bottom:0.55rem}
-.format-item p{font-size:0.92rem;color:var(--ink-soft);font-weight:500}
-.scoretable{margin-top:2.5rem;border:1.5px solid var(--line);border-radius:4px;background:var(--white);overflow:hidden}
-.scoretable .sr{display:grid;grid-template-columns:1fr 1.4fr;gap:1rem;padding:0.85rem 1.25rem;border-bottom:1px solid var(--line);font-size:0.88rem}
+/* ---------- RULES ---------- */
+.rules{background:var(--paper);border-top:1px solid var(--line);padding:3rem 1.5rem}
+.rules-inner{max-width:1400px;margin:0 auto}
+.rules h2{font-family:"Anton",sans-serif;font-size:clamp(1.5rem,3vw,2.1rem);text-transform:uppercase;margin-bottom:1.75rem}
+.rules-cols{display:grid;grid-template-columns:1.15fr 1fr;gap:2.5rem;align-items:start}
+.rules h5{font-size:0.62rem;letter-spacing:0.22em;text-transform:uppercase;font-weight:800;color:var(--purple);margin-bottom:0.8rem}
+.scoretable{border:1.5px solid var(--line);border-radius:4px;background:var(--white);overflow:hidden}
+.scoretable .sr{display:grid;grid-template-columns:1fr 1.3fr;gap:1rem;padding:0.75rem 1.1rem;border-bottom:1px solid var(--line);font-size:0.85rem}
 .scoretable .sr:last-child{border-bottom:none}
-.scoretable .sr.h{background:var(--purple);color:var(--white);font-size:0.64rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:700}
+.scoretable .sr.h{background:var(--purple);color:var(--white);font-size:0.6rem;letter-spacing:0.18em;text-transform:uppercase;font-weight:700}
 .scoretable .sr .k{font-weight:800}
 .scoretable .sr .v{color:var(--ink-soft);font-weight:600}
+.tiebreak{counter-reset:tb;border:1.5px solid var(--line);border-radius:4px;background:var(--white);overflow:hidden}
+.tiebreak li{
+  list-style:none;counter-increment:tb;padding:0.7rem 1.1rem 0.7rem 2.9rem;position:relative;
+  border-bottom:1px solid var(--line);font-size:0.85rem;font-weight:600;color:var(--ink-soft);
+}
+.tiebreak li:last-child{border-bottom:none}
+.tiebreak li::before{
+  content:counter(tb);position:absolute;left:1.1rem;top:0.72rem;
+  width:1.3rem;height:1.3rem;border-radius:50%;background:var(--purple);color:var(--white);
+  font-size:0.66rem;font-weight:800;display:grid;place-items:center;
+}
+.tiebreak li b{color:var(--ink);font-weight:800}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:0.9rem;margin-top:2rem}
+.fact{background:var(--white);border:1.5px solid var(--line);border-radius:4px;padding:0.85rem 1rem}
+.fact dt{font-size:0.58rem;letter-spacing:0.2em;text-transform:uppercase;font-weight:800;color:var(--grey);margin-bottom:0.3rem}
+.fact dd{font-size:0.85rem;font-weight:700;color:var(--ink);line-height:1.4}
+.fact dd small{display:block;font-size:0.74rem;font-weight:600;color:var(--grey);margin-top:0.15rem}
 
 /* ---------- FOOTER ---------- */
-footer{background:var(--ink);color:var(--white);padding:3rem 2rem}
+footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
 .footer-inner{
-  max-width:1300px;margin:0 auto;display:flex;justify-content:space-between;
-  align-items:center;gap:1.5rem;flex-wrap:wrap;font-size:0.78rem;color:rgba(255,255,255,0.65);
+  max-width:1400px;margin:0 auto;display:flex;justify-content:space-between;
+  align-items:center;gap:1.25rem;flex-wrap:wrap;font-size:0.76rem;color:rgba(255,255,255,0.65);
 }
 .footer-inner a{color:rgba(255,255,255,0.65);transition:color .25s}
 .footer-inner a:hover{color:var(--coral)}
-.footer-links{display:flex;gap:1.5rem;flex-wrap:wrap}
+.footer-links{display:flex;gap:1.25rem;flex-wrap:wrap}
 
 /* ---------- RESPONSIVE ---------- */
+@media (max-width:1180px){
+  .courts{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:1080px){
+  .rules-cols{grid-template-columns:1fr;gap:2rem}
+}
 @media (max-width:1000px){
   .groups{grid-template-columns:1fr;gap:2rem}
   .bracket,.bracket.short{grid-template-columns:1fr;gap:2rem}
   .rd-semis .match::after,.rd-semis::after,
   .rd-final .match::before,.rd-final .match::after{display:none}
   .rd-final{justify-content:flex-start}
-  .days{grid-template-columns:1fr;gap:2rem}
 }
-@media (max-width:700px){
+@media (max-width:760px){
   body{font-size:16px}
-  .nav-inner{padding:0.8rem 1.15rem}
-  .brand{font-size:0.9rem}
-  .nav-back{display:none}
-  .hero{margin-top:66px;padding:3rem 1.15rem 2.5rem}
-  .tabs-wrap{top:66px}
-  .tabs-inner{padding:0.9rem 1.15rem;gap:0.8rem}
+  :root{--navh:54px}
+  .nav-inner{padding:0 0.9rem;gap:0.5rem}
+  .brand-text{font-size:0.8rem}
+  .brand-text small{display:none}
+  .seg button{padding:0.4rem 0.7rem;font-size:0.62rem;letter-spacing:0.1em}
+  .feed{padding:0.35rem 0.6rem;font-size:0.6rem}
+  .feed .txt{display:none}
+  .strip{padding:0.5rem 0.9rem}
+  .strip-inner{font-size:0.6rem;gap:0.35rem 0.8rem;letter-spacing:0.12em}
+  .strip-inner .hide-sm{display:none}
+
+  .tabs-inner{padding:0.6rem 0.9rem;gap:0.6rem;flex-direction:column;align-items:stretch}
   .tabs-label{display:none}
-  .tabs{flex-wrap:nowrap;overflow-x:auto;width:100%;padding-bottom:0.3rem;-webkit-overflow-scrolling:touch}
-  .tab{white-space:nowrap}
-  .feed{margin-left:0;width:100%;justify-content:center;order:3}
-  .block-toggle .hint{display:none}
-  main{padding:2.25rem 1.15rem 3rem}
-  .hero-meta{gap:0 1.5rem}
-  .format,.oop{padding:2.5rem 1.15rem}
-  .scoretable .sr{grid-template-columns:1fr;gap:0.2rem}
-  .slot-row{grid-template-columns:4.6rem 1fr;gap:0.7rem;padding:0.7rem 1rem}
+  .tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;width:100%}
+  .tabs.days{grid-template-columns:1fr 1fr}
+  .tab{padding:0.42rem 0.5rem;font-size:0.66rem;letter-spacing:0.05em;gap:0.35rem}
+
+  main{padding:1.5rem 0.9rem 2.5rem}
+  .div-head{gap:0.9rem;margin-bottom:1.1rem}
+  .rules{padding:2.25rem 0.9rem}
+  .scoretable .sr{grid-template-columns:1fr;gap:0.15rem}
   thead th:nth-child(n+5),tbody td:nth-child(n+5){display:none}
   thead th:last-child,tbody td:last-child{display:table-cell}
+  .block-toggle .hint{display:none}
+
+  .courts{grid-template-columns:1fr 1fr;gap:0.5rem}
+  .court-team{font-size:0.75rem}
+  .court-now,.court-next{padding:0.55rem 0.6rem}
+  .court-meta{font-size:0.6rem}
+  .court-head{padding:0.42rem 0.6rem;font-size:0.58rem;letter-spacing:0.14em}
+  .sched-head p{font-size:0.84rem}
+  .gridwrap{display:none}
+  .clist{display:flex}
+  .filters input{min-width:100%;max-width:none}
+  .filters select{flex:1;min-width:8rem}
+}
+@media (max-width:340px){
+  .courts{grid-template-columns:1fr}
 }
 @media (prefers-reduced-motion:reduce){
   *{transition:none!important;animation:none!important}
@@ -378,121 +499,73 @@ footer{background:var(--ink);color:var(--white);padding:3rem 2rem}
     <a class="brand" href="/">
       <div class="brand-logo" style="background-image:url('data:image/jpeg;base64,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')"></div>
       <div class="brand-text">
-        Vancouver Beach Tennis
-        <small>Open 2026</small>
+        Open 2026
+        <small>Vancouver Beach Tennis</small>
       </div>
     </a>
     <div class="nav-actions">
-      <a class="nav-back" href="/">Back to site</a>
-      <a class="btn-nav" href="#order">Order of play</a>
+      <div class="seg" id="views" role="tablist" aria-label="View">
+        <button type="button" role="tab" data-view="draws" aria-selected="true">Draws</button>
+        <button type="button" role="tab" data-view="schedule" aria-selected="false">Schedule</button>
+      </div>
+      <button class="feed preview" id="feed" type="button" title="Tap to refresh"><span class="pulse"></span><span class="txt">Loading…</span></button>
     </div>
   </div>
 </header>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="eyebrow">Vancouver Beach Tennis Open 2026</div>
-    <h1 class="display">Draws &amp;<br><em>Results</em></h1>
-    <dl class="hero-meta">
-      <div><dt>Dates</dt><dd>August 22–23, 2026</dd></div>
-      <div><dt>Location</dt><dd>Locarno Beach, Vancouver</dd></div>
-      <div><dt>Divisions</dt><dd>6 · 43 teams</dd></div>
-      <div><dt>Courts</dt><dd>6 both days</dd></div>
-      <div><dt>Tournament Director</dt><dd>David Garzon</dd></div>
-    </dl>
+<div class="strip">
+  <div class="strip-inner">
+    <span><b>Aug 22–23</b></span>
+    <span class="sep">·</span>
+    <span>Locarno Beach</span>
+    <span class="sep hide-sm">·</span>
+    <span class="hide-sm">6 divisions · 43 teams · 6 courts</span>
   </div>
-</section>
+</div>
 
 <div class="tabs-wrap">
   <div class="tabs-inner">
-    <span class="tabs-label">Division</span>
+    <span class="tabs-label" id="tabsLabel">Division</span>
     <div class="tabs" id="tabs" role="tablist" aria-label="Divisions"></div>
-    <button class="feed preview" id="feed" type="button" title="Tap to refresh"><span class="pulse"></span>Loading…</button>
   </div>
 </div>
 
 <main id="main"></main>
 
-<section class="oop" id="order">
-  <div class="oop-inner">
-    <h2>Order of play</h2>
-    <p class="lede">Match slots are 40 minutes. Times are a guide, not a guarantee — matches are called as courts free up, so be at the site and ready 30 minutes before your listed block.</p>
-    <div class="days">
-      <div class="day-card">
-        <div class="day-head sat">
-          <h3>Saturday 22 August</h3>
-          <p>Mixed A/B · Mixed C/D — check-in from 9:30</p>
+<section class="rules" id="rules">
+  <div class="rules-inner">
+    <h2>Rules in short</h2>
+    <div class="rules-cols">
+      <div>
+        <h5>How long each match is</h5>
+        <div class="scoretable">
+          <div class="sr h"><span class="k">Stage</span><span class="v">Format</span></div>
+          <div class="sr"><span class="k">Group stage</span><span class="v">One set to 6 · tiebreak at 6–6</span></div>
+          <div class="sr"><span class="k">Semifinals · 3rd / 4th</span><span class="v">One set to 6 · tiebreak at 6–6</span></div>
+          <div class="sr"><span class="k">Finals</span><span class="v">Two sets to 6 · super tiebreak to 10 instead of a third set</span></div>
+          <div class="sr"><span class="k">Repechage · placement</span><span class="v">One set to 4 · tiebreak at 4–4</span></div>
         </div>
-        <div class="slot-row"><span class="t">10:00</span><span class="d">Group stage — both Mixed divisions</span></div>
-        <div class="slot-row"><span class="t">12:40</span><span class="d">Mixed C/D semifinals · placement matches</span></div>
-        <div class="slot-row"><span class="t">13:20</span><span class="d">Mixed C/D final</span></div>
-        <div class="slot-row"><span class="t">14:00</span><span class="d">Mixed A/B group stage finishes</span></div>
-        <div class="slot-row"><span class="t">14:40</span><span class="d">Mixed A/B semifinals</span></div>
-        <div class="slot-row key"><span class="t">15:20</span><span class="d">Mixed A/B final</span></div>
-        <div class="slot-row key"><span class="t">~16:45</span><span class="d">Medal presentation</span></div>
       </div>
-      <div class="day-card">
-        <div class="day-head sun">
-          <h3>Sunday 23 August</h3>
-          <p>C/D check-in from 8:30 · A/B check-in from 11:45</p>
-        </div>
-        <div class="slot-row"><span class="t">9:00</span><span class="d">Group stage — Men's C/D and Women's C/D</span></div>
-        <div class="slot-row"><span class="t">12:20</span><span class="d">Men's C/D and Women's C/D finals · A/B group stage starts</span></div>
-        <div class="slot-row key"><span class="t">~13:40</span><span class="d">C/D medal presentation</span></div>
-        <div class="slot-row"><span class="t">13:40</span><span class="d">A/B group stage</span></div>
-        <div class="slot-row"><span class="t">15:00</span><span class="d">Repechage — both rounds, back to back</span></div>
-        <div class="slot-row"><span class="t">15:40</span><span class="d">A/B semifinals</span></div>
-        <div class="slot-row key"><span class="t">16:20</span><span class="d">A/B finals · 3rd / 4th</span></div>
-        <div class="slot-row key"><span class="t">~17:40</span><span class="d">Medal presentation</span></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="format" id="format">
-  <div class="format-inner">
-    <h2>How it works</h2>
-    <div class="format-grid">
-      <div class="format-item">
-        <h5>Group stage</h5>
-        <p>Group sizes vary by division because entry numbers did. Every team is guaranteed at least four matches across the day.</p>
-      </div>
-      <div class="format-item">
-        <h5>Ranking a group</h5>
-        <p>Ranked on matches won. Two teams level — the winner of their match ranks higher. Three or more level — a team that has beaten every other tied team ranks highest, and the rest are re-ranked the same way.</p>
-      </div>
-      <div class="format-item">
-        <h5>Still level</h5>
-        <p>Game difference in the matches between the tied teams only, then games won in those matches, then a draw made by the Tournament Director with a player from each team present.</p>
-      </div>
-      <div class="format-item">
-        <h5>Repechage</h5>
-        <p>In Men's A/B and Women's A/B the fourth semifinal place is not decided in the groups. The four teams that miss out play it off, so a bad start does not end your day.</p>
-      </div>
-      <div class="format-item">
-        <h5>Medals</h5>
-        <p>Champion and runner-up in each of the six divisions. No third-place medal.</p>
-      </div>
-      <div class="format-item">
-        <h5>Court rules</h5>
-        <p>Nets at 1.70 m on every court in every division. A 3 m prohibited zone applies to all players. Otherwise the 2026 ITF Rules of Beach Tennis apply.</p>
-      </div>
-      <div class="format-item">
-        <h5>Self-officiated</h5>
-        <p>Players call their own matches. Bring scoring questions to the organizing table. Conduct matters go to the Tournament Director, David Garzon, on site or at vanbeachtennis@gmail.com.</p>
-      </div>
-      <div class="format-item">
-        <h5>Walkovers</h5>
-        <p>A walkover or retirement is recorded as 6–0 so that group standings and game difference still work.</p>
+      <div>
+        <h5>Who finishes higher in a group</h5>
+        <ol class="tiebreak">
+          <li><b>Matches won.</b></li>
+          <li><b>Head to head</b> — two teams level, the winner of their match goes above.</li>
+          <li><b>Game difference</b> in the matches between the tied teams only.</li>
+          <li><b>Games won</b> in those same matches.</li>
+          <li><b>Draw</b> by the Tournament Director, with a player from each team there.</li>
+        </ol>
       </div>
     </div>
 
-    <div class="scoretable">
-      <div class="sr h"><span class="k">Stage</span><span class="v">Scoring</span></div>
-      <div class="sr"><span class="k">Group stage, semifinals, 3rd / 4th</span><span class="v">One set to 6, tiebreak at 6–6</span></div>
-      <div class="sr"><span class="k">Finals</span><span class="v">Best of three — two sets to 6, super tiebreak to 10 in place of a third set</span></div>
-      <div class="sr"><span class="k">Repechage and placement</span><span class="v">One set to 4, tiebreak at 4–4</span></div>
-    </div>
+    <dl class="facts">
+      <div class="fact"><dt>Court</dt><dd>Net 1.70 m<small>Every court, every division. 3 m prohibited zone. ITF 2026 rules otherwise.</small></dd></div>
+      <div class="fact"><dt>Officiating</dt><dd>You call your own match<small>Scoring questions to the table. Conduct to David Garzon.</small></dd></div>
+      <div class="fact"><dt>Repechage</dt><dd>Men's and Women's A/B<small>The four teams that miss out play off for the last semifinal place.</small></dd></div>
+      <div class="fact"><dt>Medals</dt><dd>Champion and runner-up<small>Six divisions. No third-place medal.</small></dd></div>
+      <div class="fact"><dt>Walkover</dt><dd>Recorded as 6–0<small>Keeps standings and game difference working.</small></dd></div>
+      <div class="fact"><dt>Timing</dt><dd>40-minute slots<small>Times are a guide. Be ready 30 minutes before your listed slot.</small></dd></div>
+    </dl>
   </div>
 </section>
 
@@ -502,8 +575,7 @@ footer{background:var(--ink);color:var(--white);padding:3rem 2rem}
     <div class="footer-links">
       <a href="mailto:vanbeachtennis@gmail.com">vanbeachtennis@gmail.com</a>
       <a href="/">vanbeachtennis.ca</a>
-      <a href="#order">Order of play</a>
-      <a href="#format">Format</a>
+      <a href="#rules">Rules</a>
     </div>
   </div>
 </footer>
@@ -533,36 +605,25 @@ const FEEDS = [
 const REFRESH_SECONDS = 60;
 const UPDATED = "Draw published 20 August 2026";
 
-/* Format, generated from the tournament specification. */
+/* Schedule settings. Courts run in parallel; a slot is one match on one court. */
+const COURTS = 6;
+const SLOT_MIN = 40;
+const DAY_START = { Saturday: 10 * 60, Sunday: 9 * 60 };
+const DAY_DATE  = { Saturday: "Saturday 22 August", Sunday: "Sunday 23 August" };
+/* Lower number = gets a court first when several matches are ready. */
+const PRIORITY = { MXAB:1, MXCD:1, MNCD:1, WMCD:1, MNAB:2, WMAB:2 };
+
+/* Format, generated from the tournament specification.
+   Order here is the order of the division tabs. */
 const DIVISIONS = [
   {
     "code": "MXAB",
     "name": "Mixed A/B",
     "day": "Saturday",
     "blurb": "Ten teams, two groups of five. Four group matches each, then the top two of every group go to the semifinals.",
-    "groups": [
-      {
-        "L": "A",
-        "n": 5,
-        "q": 2
-      },
-      {
-        "L": "B",
-        "n": 5,
-        "q": 2
-      }
-    ],
+    "groups": [{ "L": "A", "n": 5, "q": 2 }, { "L": "B", "n": 5, "q": 2 }],
     "single": false,
-    "sf": [
-      [
-        "A1",
-        "B2"
-      ],
-      [
-        "B1",
-        "A2"
-      ]
-    ],
+    "sf": [["A1", "B2"], ["B1", "A2"]],
     "finalSeeds": null,
     "extras": []
   },
@@ -571,159 +632,13 @@ const DIVISIONS = [
     "name": "Mixed C/D",
     "day": "Saturday",
     "blurb": "Eight teams, two groups of four. Top two of every group go to the semifinals; the rest play a placement match.",
-    "groups": [
-      {
-        "L": "A",
-        "n": 4,
-        "q": 2
-      },
-      {
-        "L": "B",
-        "n": 4,
-        "q": 2
-      }
-    ],
+    "groups": [{ "L": "A", "n": 4, "q": 2 }, { "L": "B", "n": 4, "q": 2 }],
     "single": false,
-    "sf": [
-      [
-        "A1",
-        "B2"
-      ],
-      [
-        "B1",
-        "A2"
-      ]
-    ],
+    "sf": [["A1", "B2"], ["B1", "A2"]],
     "finalSeeds": null,
     "extras": [
-      {
-        "id": "P1",
-        "label": "5th / 6th",
-        "a": "A3",
-        "b": "B3",
-        "fmt": "Set to 4",
-        "kind": "plc"
-      },
-      {
-        "id": "P2",
-        "label": "7th / 8th",
-        "a": "A4",
-        "b": "B4",
-        "fmt": "Set to 4",
-        "kind": "plc"
-      }
-    ]
-  },
-  {
-    "code": "MNCD",
-    "name": "Men's C/D",
-    "day": "Sunday",
-    "blurb": "Six teams, one group. Everyone plays everyone — five matches each — and the top two meet in the final.",
-    "groups": [
-      {
-        "L": "A",
-        "n": 6,
-        "q": 2
-      }
-    ],
-    "single": true,
-    "sf": null,
-    "finalSeeds": [
-      "A1",
-      "A2"
-    ],
-    "extras": []
-  },
-  {
-    "code": "WMCD",
-    "name": "Women's C/D",
-    "day": "Sunday",
-    "blurb": "Five teams, one group. Everyone plays everyone — four matches each — and the top two meet in the final.",
-    "groups": [
-      {
-        "L": "A",
-        "n": 5,
-        "q": 2
-      }
-    ],
-    "single": true,
-    "sf": null,
-    "finalSeeds": [
-      "A1",
-      "A2"
-    ],
-    "extras": []
-  },
-  {
-    "code": "MNAB",
-    "name": "Men's A/B",
-    "day": "Sunday",
-    "blurb": "Seven teams. Two go through from the group of four and one from the group of three; the last semifinal place is won in the repechage.",
-    "groups": [
-      {
-        "L": "A",
-        "n": 4,
-        "q": 2
-      },
-      {
-        "L": "B",
-        "n": 3,
-        "q": 1
-      }
-    ],
-    "single": false,
-    "sf": [
-      [
-        "A1",
-        "W:RPF"
-      ],
-      [
-        "B1",
-        "A2"
-      ]
-    ],
-    "finalSeeds": null,
-    "extras": [
-      {
-        "id": "RP1",
-        "label": "Repechage",
-        "a": "A3",
-        "b": "B3",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "RP2",
-        "label": "Repechage",
-        "a": "A4",
-        "b": "B2",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "RPF",
-        "label": "Repechage final",
-        "a": "W:RP1",
-        "b": "W:RP2",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "RPL",
-        "label": "Repechage 6th / 7th",
-        "a": "L:RP1",
-        "b": "L:RP2",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "3RD",
-        "label": "3rd / 4th",
-        "a": "L:SF1",
-        "b": "L:SF2",
-        "fmt": "Set to 6",
-        "kind": "third"
-      }
+      { "id": "P1", "label": "5th / 6th", "a": "A3", "b": "B3", "fmt": "Set to 4", "kind": "plc" },
+      { "id": "P2", "label": "7th / 8th", "a": "A4", "b": "B4", "fmt": "Set to 4", "kind": "plc" }
     ]
   },
   {
@@ -731,72 +646,56 @@ const DIVISIONS = [
     "name": "Women's A/B",
     "day": "Sunday",
     "blurb": "Seven teams. Two go through from the group of four and one from the group of three; the last semifinal place is won in the repechage.",
-    "groups": [
-      {
-        "L": "A",
-        "n": 4,
-        "q": 2
-      },
-      {
-        "L": "B",
-        "n": 3,
-        "q": 1
-      }
-    ],
+    "groups": [{ "L": "A", "n": 4, "q": 2 }, { "L": "B", "n": 3, "q": 1 }],
     "single": false,
-    "sf": [
-      [
-        "A1",
-        "W:RPF"
-      ],
-      [
-        "B1",
-        "A2"
-      ]
-    ],
+    "sf": [["A1", "W:RPF"], ["B1", "A2"]],
     "finalSeeds": null,
     "extras": [
-      {
-        "id": "RP1",
-        "label": "Repechage",
-        "a": "A3",
-        "b": "B3",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "RP2",
-        "label": "Repechage",
-        "a": "A4",
-        "b": "B2",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "RPF",
-        "label": "Repechage final",
-        "a": "W:RP1",
-        "b": "W:RP2",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "RPL",
-        "label": "Repechage 6th / 7th",
-        "a": "L:RP1",
-        "b": "L:RP2",
-        "fmt": "Set to 4",
-        "kind": "rp"
-      },
-      {
-        "id": "3RD",
-        "label": "3rd / 4th",
-        "a": "L:SF1",
-        "b": "L:SF2",
-        "fmt": "Set to 6",
-        "kind": "third"
-      }
+      { "id": "RP1", "label": "Repechage", "a": "A3", "b": "B3", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "RP2", "label": "Repechage", "a": "A4", "b": "B2", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "RPF", "label": "Repechage final", "a": "W:RP1", "b": "W:RP2", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "RPL", "label": "Repechage 6th / 7th", "a": "L:RP1", "b": "L:RP2", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "3RD", "label": "3rd / 4th", "a": "L:SF1", "b": "L:SF2", "fmt": "Set to 6", "kind": "third" }
     ]
+  },
+  {
+    "code": "WMCD",
+    "name": "Women's C/D",
+    "day": "Sunday",
+    "blurb": "Five teams, one group. Everyone plays everyone — four matches each — and the top two meet in the final.",
+    "groups": [{ "L": "A", "n": 5, "q": 2 }],
+    "single": true,
+    "sf": null,
+    "finalSeeds": ["A1", "A2"],
+    "extras": []
+  },
+  {
+    "code": "MNAB",
+    "name": "Men's A/B",
+    "day": "Sunday",
+    "blurb": "Seven teams. Two go through from the group of four and one from the group of three; the last semifinal place is won in the repechage.",
+    "groups": [{ "L": "A", "n": 4, "q": 2 }, { "L": "B", "n": 3, "q": 1 }],
+    "single": false,
+    "sf": [["A1", "W:RPF"], ["B1", "A2"]],
+    "finalSeeds": null,
+    "extras": [
+      { "id": "RP1", "label": "Repechage", "a": "A3", "b": "B3", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "RP2", "label": "Repechage", "a": "A4", "b": "B2", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "RPF", "label": "Repechage final", "a": "W:RP1", "b": "W:RP2", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "RPL", "label": "Repechage 6th / 7th", "a": "L:RP1", "b": "L:RP2", "fmt": "Set to 4", "kind": "rp" },
+      { "id": "3RD", "label": "3rd / 4th", "a": "L:SF1", "b": "L:SF2", "fmt": "Set to 6", "kind": "third" }
+    ]
+  },
+  {
+    "code": "MNCD",
+    "name": "Men's C/D",
+    "day": "Sunday",
+    "blurb": "Six teams, one group. Everyone plays everyone — five matches each — and the top two meet in the final.",
+    "groups": [{ "L": "A", "n": 6, "q": 2 }],
+    "single": true,
+    "sf": null,
+    "finalSeeds": ["A1", "A2"],
+    "extras": []
   }
 ];
 
@@ -812,12 +711,17 @@ DIVISIONS.forEach(d => {
 
 let LIVE = {};
 let currentIndex = 0;
+let VIEW = "draws";
+let SCHED_DAY = "Saturday";
+const FILTER = { div: "", court: "", q: "", hideDone: false };
 
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const parseSet = s => { const m = /^\s*(\d+)\s*[-–]\s*(\d+)\s*$/.exec(s || ""); return m ? [Number(m[1]), Number(m[2])] : null; };
 const splitSets = s => String(s || "").split(/[,/;]/).map(parseSet).filter(Boolean);
 const gid = (d, L, a, b) => `${d.code}-${L}-${Math.min(a,b)+1}v${Math.max(a,b)+1}`;
 const mid = (d, k) => `${d.code}-${k}`;
+const fam = c => c.toLowerCase();
+const hhmm = m => String(Math.floor(m/60)).padStart(2,"0") + ":" + String(m%60).padStart(2,"0");
 
 /* ---------- CSV ---------- */
 function parseCSV(text){
@@ -879,29 +783,27 @@ function kindOf(text){
 function setStatus(state, text){
   const el = document.getElementById("feed");
   el.className = "feed " + state;
-  el.innerHTML = `<span class="pulse"></span>${esc(text)}`;
+  el.innerHTML = `<span class="pulse"></span><span class="txt">${esc(text)}</span>`;
 }
 const bust = u => u + (u.includes("?") ? "&" : "?") + "t=" + Date.now();
 const grab = async u => { const r = await fetch(bust(u), {cache:"no-store"}); if (!r.ok) throw new Error(r.status); return r.text(); };
 
 async function refresh(manual){
-  if (!FEEDS.length){ setStatus("preview", "Draw not connected yet"); return; }
+  if (!FEEDS.length){ setStatus("preview", "Not connected"); return; }
   if (manual) setStatus("loading", "Refreshing…");
   const res = await Promise.allSettled(FEEDS.map(grab));
   const ok = res.filter(r => r.status === "fulfilled");
-  if (!ok.length){ setStatus("stale", "Can't reach the sheet — showing the last data loaded"); return; }
-  let scores = 0, teams = 0, seen = false;
+  if (!ok.length){ setStatus("stale", "Offline"); return; }
+  let seen = false;
   ok.forEach(r => {
     const k = kindOf(r.value);
-    if (k === "scores"){ scores = applyScores(r.value); seen = true; }
-    else if (k === "teams") teams += applyTeams(r.value);
+    if (k === "scores"){ applyScores(r.value); seen = true; }
+    else if (k === "teams") applyTeams(r.value);
   });
   const t = new Date().toLocaleTimeString([], {hour:"2-digit", minute:"2-digit"});
   const bad = res.length - ok.length;
-  setStatus(bad ? "stale" : "live", seen
-    ? `Live · ${scores} scores · updated ${t}${bad ? " · 1 tab unreachable" : ""}`
-    : `Draw loaded · ${teams} teams · no score feed yet`);
-  render(DIVISIONS[currentIndex]);
+  setStatus(bad ? "stale" : "live", (seen ? "Live · " : "Draw · ") + t);
+  paint();
 }
 
 /* ---------- fixtures and standings ---------- */
@@ -1036,7 +938,130 @@ const label = (d, ref) => {
   return d.single ? ref.replace(/^[A-Z]/, "") : ref;
 };
 
-/* ---------- rendering ---------- */
+/* =====================================================================
+   SCHEDULE — courts, times and live state
+
+   Every match in the tournament is laid out on 6 courts in 40-minute
+   slots. Dependencies are respected: a semifinal is never placed before
+   the group matches that feed it, and no team is put on two courts at
+   the same time. Nothing here needs editing.
+   ===================================================================== */
+
+function buildDayMatches(day){
+  const list = [];
+  DIVISIONS.filter(d => d.day === day).forEach(d => {
+    let seq = 0;
+    d.groups.forEach(g => {
+      fixtures(d.teams[g.L].length).forEach(([a, b]) => {
+        list.push({
+          id: gid(d, g.L, a, b), d, stage: 0, seq: seq++,
+          title: d.single ? "Group stage" : "Group " + g.L,
+          fmt: "Set to 6",
+          sides: [{ t:"g", L:g.L, i:a }, { t:"g", L:g.L, i:b }],
+          tok: [d.code+"|"+g.L+"|"+a, d.code+"|"+g.L+"|"+b],
+          deps: []
+        });
+      });
+    });
+    const groupIds = list.filter(m => m.d === d).map(m => m.id);
+    const add = (id, title, a, b, fmt, stage, deps) => list.push({
+      id: mid(d, id), d, stage, seq: seq++, title, fmt,
+      sides: [{ t:"r", ref:a }, { t:"r", ref:b }],
+      tok: [d.code+"|r|"+a, d.code+"|r|"+b],
+      deps
+    });
+    d.extras.filter(x => x.kind === "rp").forEach(x => {
+      const deps = groupIds.slice();
+      if (x.id === "RPF" || x.id === "RPL") deps.push(mid(d,"RP1"), mid(d,"RP2"));
+      add(x.id, x.label, x.a, x.b, x.fmt, 1, deps);
+    });
+    d.extras.filter(x => x.kind === "plc").forEach(x => add(x.id, x.label, x.a, x.b, x.fmt, 1, groupIds.slice()));
+    if (d.sf){
+      /* Both semifinals share the same dependencies so they always land in
+         the same slot — no team waits an hour for the other half of the draw. */
+      const sfDeps = groupIds.slice();
+      d.sf.forEach(p => p.forEach(r => {
+        const m = /^[WL]:(.+)$/.exec(r);
+        if (m) sfDeps.push(mid(d, m[1]));
+      }));
+      d.sf.forEach((p, i) => add("SF" + (i+1), "Semifinal " + (i+1), p[0], p[1], "Set to 6", 2, sfDeps.slice()));
+    }
+    d.extras.filter(x => x.kind === "third")
+      .forEach(x => add(x.id, x.label, x.a, x.b, x.fmt, 3, [mid(d,"SF1"), mid(d,"SF2")]));
+    const fp = pairOf(d, "F");
+    add("F", "Final", fp[0], fp[1], "Best of 3", 4, d.sf ? [mid(d,"SF1"), mid(d,"SF2")] : groupIds.slice());
+  });
+  return list;
+}
+
+function scheduleDay(day){
+  const ms = buildDayMatches(day);
+  const total = {}, done = {};
+  ms.forEach(m => total[m.d.code] = (total[m.d.code] || 0) + 1);
+  const at = new Map(), placed = [];
+  let slot = 0, left = ms.length, guard = 0;
+  while (left > 0 && guard++ < 200){
+    const used = new Set();
+    for (let court = 1; court <= COURTS; court++){
+      const cand = ms.filter(m => !at.has(m.id)
+        && m.deps.every(id => at.has(id) && at.get(id) < slot)
+        && m.tok.every(t => !used.has(t)));
+      if (!cand.length) break;
+      cand.sort((x, y) =>
+        (PRIORITY[x.d.code]||1) - (PRIORITY[y.d.code]||1)
+        || x.stage - y.stage
+        || ((done[x.d.code]||0)/total[x.d.code]) - ((done[y.d.code]||0)/total[y.d.code])
+        || x.seq - y.seq);
+      const m = cand[0];
+      at.set(m.id, slot);
+      done[m.d.code] = (done[m.d.code] || 0) + 1;
+      m.tok.forEach(t => used.add(t));
+      placed.push(Object.assign({}, m, { slot, court, time: DAY_START[day] + slot * SLOT_MIN }));
+      left--;
+    }
+    slot++;
+  }
+  return placed;
+}
+
+function sideName(m, s){
+  return s.t === "g" ? m.d.teams[s.L][s.i] : resolve(m.d, s.ref);
+}
+function sideRef(m, s){
+  return s.t === "g" ? (m.d.single ? "" : s.L) + (s.i + 1) : label(m.d, s.ref);
+}
+function matchScore(m){
+  if (m.id.endsWith("-F")){
+    const sets = splitSets(LIVE[m.id]);
+    if (!sets.length) return null;
+    const w = sets.reduce((a, s) => s[0] > s[1] ? [a[0]+1, a[1]] : [a[0], a[1]+1], [0,0]);
+    return { txt: [sets.map(s=>s[0]).join(" "), sets.map(s=>s[1]).join(" ")], w: w[0] > w[1] ? 0 : 1 };
+  }
+  const s = parseSet(LIVE[m.id]);
+  return s ? { txt: [String(s[0]), String(s[1])], w: s[0] > s[1] ? 0 : 1 } : null;
+}
+
+/* Court state comes from the scores: everything with a score is played,
+   and the first match on a court without one is the match on court now. */
+function planDay(day){
+  const plan = scheduleDay(day);
+  const byCourt = {};
+  for (let c = 1; c <= COURTS; c++) byCourt[c] = [];
+  plan.forEach(m => byCourt[m.court].push(m));
+  Object.values(byCourt).forEach(list => {
+    list.sort((a,b) => a.slot - b.slot);
+    let found = false;
+    list.forEach(m => {
+      m.score = matchScore(m);
+      if (m.score){ m.state = "done"; return; }
+      if (!found){ m.state = "now"; found = true; }
+      else m.state = "queued";
+    });
+  });
+  return { plan, byCourt };
+}
+
+/* ---------- rendering: draws ---------- */
 function groupCard(d, g){
   const teams = d.teams[g.L];
   const { rows, ranked, fx } = tableOf(d, g.L);
@@ -1063,7 +1088,7 @@ function groupCard(d, g){
     <div class="group-card">
       <div class="group-head">
         <h3>${d.single ? "Group stage" : "Group " + g.L}</h3>
-        <span>${teams.length} teams · ${ranked ? "live standings" : "awaiting first match"}</span>
+        <span>${teams.length} teams · ${ranked ? "live" : "not started"}</span>
       </div>
       <table><thead><tr><th>#</th><th>Team</th><th>P</th><th>W–L</th><th>Games</th><th>Diff</th><th>Pts</th></tr></thead>
       <tbody>${body}</tbody></table>
@@ -1131,8 +1156,8 @@ function extraCards(d, kinds, title, note){
       ${line(x.a, s ? s[0] : "", s && s[0] > s[1])}
       ${line(x.b, s ? s[1] : "", s && s[1] > s[0])}</div>`;
   }).join("");
-  return `<div class="block-title">${title}</div>
-    <div class="placement">${cards}</div><p class="note">${note}</p>`;
+  return `<div class="sub-block"><div class="block-title">${title}</div>
+    <div class="placement">${cards}</div><p class="note">${note}</p></div>`;
 }
 
 function statusOf(d){
@@ -1143,19 +1168,18 @@ function statusOf(d){
     done += t.fx.filter(([a,b]) => fxScore(d, g.L, a, b)).length;
   });
   if (done === 0) return "Draw set · not started";
-  if (done < total) return `Group stage · ${done} of ${total} matches played`;
+  if (done < total) return `Group stage · ${done} of ${total} played`;
   const f = scoreOf(d, "F");
   return f && f.w ? "Complete" : "Playoffs";
 }
 
-function render(d){
-  cache.clear();
+function renderDraws(d){
   const groupsDone = d.groups.every(g => tableOf(d, g.L).complete);
   const teamCount = d.groups.reduce((n, g) => n + d.teams[g.L].length, 0);
-  document.getElementById("main").innerHTML = `
+  return `
     <div class="div-head">
       <div><h2>${esc(d.name)}</h2><p class="div-tagline">${esc(d.blurb)}</p></div>
-      <div style="display:flex;gap:0.6rem;flex-wrap:wrap">
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
         <span class="chip ${d.day === "Saturday" ? "chip-sat" : "chip-sun"}">${d.day}</span>
         <span class="chip chip-status">${teamCount} teams</span>
         <span class="chip chip-status">${statusOf(d)}</span>
@@ -1167,9 +1191,9 @@ function render(d){
       <span class="hint">${groupsDone ? "Groups decided" : "Show the path to the final"}</span>
     </button>
     <div class="panel" id="playoffs" ${groupsDone ? "" : "hidden"}>
-      ${extraCards(d, ["rp"], "Repechage",
-        "The four teams that miss out play on at the same time. The winners meet, and that winner takes the last semifinal place; the losers meet for 6th and 7th.")}
       ${bracket(d)}
+      ${extraCards(d, ["rp"], "Repechage — played before the semifinals",
+        "The four teams that miss out play at the same time. The winners meet, and that winner takes the last semifinal place; the losers meet for 6th and 7th.")}
       ${extraCards(d, ["third","plc"], "Placement",
         "Decides published final standings. No medals are awarded — champion and runner-up only.")}
     </div>
@@ -1178,28 +1202,192 @@ function render(d){
     <div class="groups ${d.single ? "single" : ""}">${d.groups.map(g => groupCard(d, g)).join("")}</div>`;
 }
 
-const tabs = document.getElementById("tabs");
-tabs.innerHTML = DIVISIONS.map((d, i) =>
-  `<button class="tab" role="tab" data-day="${d.day}" data-i="${i}" aria-selected="${i === 0}">
-     <span class="dot"></span>${esc(d.name)}</button>`).join("");
-tabs.addEventListener("click", e => {
+/* ---------- rendering: schedule ---------- */
+function matchLine(m, i){
+  const n = sideName(m, m.sides[i]);
+  const sc = m.score;
+  const won = sc && sc.w === i;
+  return `<div class="cell-row ${n ? "" : "tbd"} ${won ? "w" : ""}">
+    <span class="n">${n ? esc(n) : sideRef(m, m.sides[i]) + " · TBD"}</span>
+    <span class="s">${sc ? sc.txt[i] : ""}</span></div>`;
+}
+function stateTag(m){
+  if (m.state === "done") return `<span class="state fin">Final</span>`;
+  if (m.state === "now")  return `<span class="state on">On court</span>`;
+  return `<span class="state">${hhmm(m.time)}</span>`;
+}
+function cellHTML(m, dim){
+  return `<div class="cell ${m.state === "done" ? "done" : ""} ${m.state === "now" ? "live" : ""} ${dim ? "dim" : ""}">
+    <div class="cell-top"><span class="tag ${fam(m.d.code)}">${esc(m.d.name)}</span>${stateTag(m)}</div>
+    ${matchLine(m, 0)}${matchLine(m, 1)}
+    <div class="cell-stage">${esc(m.title)}</div></div>`;
+}
+function passes(m){
+  if (FILTER.div && m.d.code !== FILTER.div) return false;
+  if (FILTER.court && String(m.court) !== FILTER.court) return false;
+  if (FILTER.hideDone && m.state === "done") return false;
+  if (FILTER.q){
+    const q = FILTER.q.toLowerCase();
+    const hay = [m.d.name, m.title, sideName(m, m.sides[0]) || "", sideName(m, m.sides[1]) || ""].join(" ").toLowerCase();
+    if (!hay.includes(q)) return false;
+  }
+  return true;
+}
+
+function courtBoard(byCourt){
+  let html = "";
+  for (let c = 1; c <= COURTS; c++){
+    const list = byCourt[c] || [];
+    const now = list.find(m => m.state === "now");
+    const nxt = list.filter(m => m.state === "queued")[0];
+    const played = list.filter(m => m.state === "done").length;
+    const one = (m, on) => m ? `
+      <div class="court-lab ${on ? "on" : ""}">${on ? '<span class="pulse"></span>On court' : "Next up · " + hhmm(m.time)}</div>
+      <div class="court-team ${sideName(m, m.sides[0]) ? "" : "tbd"}">${esc(sideName(m, m.sides[0]) || sideRef(m, m.sides[0]) + " · TBD")}</div>
+      <div class="court-team ${sideName(m, m.sides[1]) ? "" : "tbd"}">${esc(sideName(m, m.sides[1]) || sideRef(m, m.sides[1]) + " · TBD")}</div>
+      <div class="court-meta">${esc(m.d.name)} · ${esc(m.title)}</div>` : "";
+    html += `<div class="court ${now ? "active" : ""}">
+      <div class="court-head"><span>Court ${c}</span><span class="prog">${played}/${list.length}</span></div>
+      ${now ? `<div class="court-now">${one(now, true)}</div>` : `<div class="court-idle">All matches played</div>`}
+      ${nxt ? `<div class="court-next">${one(nxt, false)}</div>` : ""}
+    </div>`;
+  }
+  return `<div class="courts">${html}</div>`;
+}
+
+function renderSchedule(){
+  const { plan, byCourt } = planDay(SCHED_DAY);
+  const slots = [...new Set(plan.map(m => m.slot))].sort((a,b) => a - b);
+  const shown = plan.filter(passes);
+  const dayDivs = DIVISIONS.filter(d => d.day === SCHED_DAY);
+
+  const opts = (sel, list) => list.map(([v,t]) =>
+    `<option value="${v}" ${sel === v ? "selected" : ""}>${esc(t)}</option>`).join("");
+
+  const filters = `<div class="filters">
+    <select id="fDiv" aria-label="Division">${opts(FILTER.div, [["","All divisions"], ...dayDivs.map(d => [d.code, d.name])])}</select>
+    <select id="fCourt" aria-label="Court">${opts(FILTER.court, [["","All courts"], ...Array.from({length:COURTS},(_,i)=>[String(i+1),"Court " + (i+1)])])}</select>
+    <input id="fQ" type="search" placeholder="Search a team or player" value="${esc(FILTER.q)}" />
+    <button class="fbtn" id="fDone" type="button" aria-pressed="${FILTER.hideDone}">Hide finished</button>
+    <button class="fbtn clear" id="fClear" type="button">Clear</button>
+  </div>`;
+
+  let grid = `<div class="cgrid">
+    <div class="chead time">Time</div>` +
+    Array.from({length:COURTS},(_,i)=>`<div class="chead">Court ${i+1}</div>`).join("");
+  slots.forEach(s => {
+    const row = plan.filter(m => m.slot === s);
+    if (!row.some(passes)) return;
+    grid += `<div class="ctime">${hhmm(DAY_START[SCHED_DAY] + s * SLOT_MIN)}</div>`;
+    for (let c = 1; c <= COURTS; c++){
+      const m = row.find(x => x.court === c);
+      grid += m ? cellHTML(m, !passes(m)) : `<div class="cell empty"></div>`;
+    }
+  });
+  grid += `</div>`;
+
+  let list = "";
+  slots.forEach(s => {
+    const row = plan.filter(m => m.slot === s && passes(m)).sort((a,b) => a.court - b.court);
+    if (!row.length) return;
+    list += `<div class="cslot"><h4>${hhmm(DAY_START[SCHED_DAY] + s * SLOT_MIN)}</h4>` +
+      row.map(m => `<div class="crow ${m.state === "done" ? "done" : ""} ${m.state === "now" ? "live" : ""}">
+        <div class="crow-top"><span class="courtbadge">Court ${m.court}</span>
+          <span class="tag ${fam(m.d.code)}">${esc(m.d.name)}</span>${stateTag(m)}</div>
+        ${matchLine(m, 0)}${matchLine(m, 1)}
+        <div class="cell-stage">${esc(m.title)} · ${esc(m.fmt)}</div></div>`).join("") + `</div>`;
+  });
+
+  const none = `<div class="empty-state">No matches match those filters.</div>`;
+
+  return `<div class="sched-head">
+      <div><h2>${esc(DAY_DATE[SCHED_DAY])}</h2>
+      <p>Six courts, 40-minute slots. A match turns <b>on court</b> once every earlier match on that court has a score in. Times are a guide — be ready 30 minutes early.</p></div>
+      <div style="display:flex;gap:0.5rem;flex-wrap:wrap">
+        <span class="chip ${SCHED_DAY === "Saturday" ? "chip-sat" : "chip-sun"}">${plan.length} matches</span>
+        <span class="chip chip-status">First serve ${hhmm(DAY_START[SCHED_DAY])}</span>
+      </div>
+    </div>
+    <div class="block-title">Courts right now</div>
+    ${courtBoard(byCourt)}
+    <div class="block-title">Full schedule</div>
+    ${filters}
+    ${shown.length ? `<div class="gridwrap">${grid}</div><div class="clist">${list}</div>` : none}`;
+}
+
+/* ---------- view plumbing ---------- */
+function buildTabs(){
+  const tabs = document.getElementById("tabs");
+  const lab = document.getElementById("tabsLabel");
+  if (VIEW === "draws"){
+    lab.textContent = "Division";
+    tabs.className = "tabs";
+    tabs.setAttribute("aria-label", "Divisions");
+    tabs.innerHTML = DIVISIONS.map((d, i) =>
+      `<button class="tab" role="tab" data-code="${d.code}" data-i="${i}" aria-selected="${i === currentIndex}">
+         <span class="dot"></span>${esc(d.name)}</button>`).join("");
+  } else {
+    lab.textContent = "Day";
+    tabs.className = "tabs days";
+    tabs.setAttribute("aria-label", "Days");
+    tabs.innerHTML = ["Saturday","Sunday"].map(day =>
+      `<button class="tab" role="tab" data-day="${day}" data-day-pick="${day}" aria-selected="${day === SCHED_DAY}">
+         <span class="dot"></span>${DAY_DATE[day]}</button>`).join("");
+  }
+}
+function paint(){
+  cache.clear();
+  document.getElementById("main").innerHTML =
+    VIEW === "draws" ? renderDraws(DIVISIONS[currentIndex]) : renderSchedule();
+  buildTabs();
+}
+
+document.getElementById("views").addEventListener("click", e => {
+  const b = e.target.closest("button[data-view]");
+  if (!b || b.dataset.view === VIEW) return;
+  VIEW = b.dataset.view;
+  document.querySelectorAll("#views button").forEach(x => x.setAttribute("aria-selected", x === b));
+  window.scrollTo({ top: 0, behavior: "auto" });
+  paint();
+});
+document.getElementById("tabs").addEventListener("click", e => {
   const b = e.target.closest(".tab");
   if (!b) return;
-  tabs.querySelectorAll(".tab").forEach(t => t.setAttribute("aria-selected", t === b));
-  currentIndex = Number(b.dataset.i);
-  render(DIVISIONS[currentIndex]);
+  if (VIEW === "draws") currentIndex = Number(b.dataset.i);
+  else SCHED_DAY = b.dataset.dayPick;
+  paint();
 });
 document.getElementById("main").addEventListener("click", e => {
-  const b = e.target.closest(".block-toggle");
-  if (!b) return;
-  const p = document.getElementById(b.getAttribute("aria-controls"));
-  const open = b.getAttribute("aria-expanded") !== "true";
-  b.setAttribute("aria-expanded", open);
-  p.hidden = !open;
+  const t = e.target.closest(".block-toggle");
+  if (t){
+    const p = document.getElementById(t.getAttribute("aria-controls"));
+    const open = t.getAttribute("aria-expanded") !== "true";
+    t.setAttribute("aria-expanded", open);
+    p.hidden = !open;
+    return;
+  }
+  if (e.target.closest("#fDone")){ FILTER.hideDone = !FILTER.hideDone; paint(); return; }
+  if (e.target.closest("#fClear")){ FILTER.div = FILTER.court = FILTER.q = ""; FILTER.hideDone = false; paint(); return; }
+});
+document.getElementById("main").addEventListener("change", e => {
+  if (e.target.id === "fDiv"){ FILTER.div = e.target.value; paint(); }
+  if (e.target.id === "fCourt"){ FILTER.court = e.target.value; paint(); }
+});
+document.getElementById("main").addEventListener("input", e => {
+  if (e.target.id !== "fQ") return;
+  FILTER.q = e.target.value;
+  clearTimeout(window.__q);
+  window.__q = setTimeout(() => {
+    const pos = document.getElementById("fQ").selectionStart;
+    paint();
+    const el = document.getElementById("fQ");
+    if (el){ el.focus(); try { el.setSelectionRange(pos, pos); } catch(_){} }
+  }, 220);
 });
 document.getElementById("feed").addEventListener("click", () => refresh(true));
 document.getElementById("updated").textContent = UPDATED;
-render(DIVISIONS[0]);
+
+paint();
 refresh(false);
 if (FEEDS.length) setInterval(() => refresh(false), REFRESH_SECONDS * 1000);
 document.addEventListener("visibilitychange", () => { if (!document.hidden) refresh(false); });
