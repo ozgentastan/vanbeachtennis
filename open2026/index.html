@@ -124,6 +124,14 @@ header.nav{
 /* ---------- TABS ---------- */
 .tabs-wrap{border-bottom:1px solid var(--line);background:var(--white);position:sticky;top:var(--navh);z-index:60}
 .tabs-inner{max-width:1400px;margin:0 auto;padding:0.75rem 1.5rem;display:flex;align-items:center;gap:1.25rem}
+.docs-link{
+  margin-left:auto;display:inline-flex;align-items:center;gap:0.5rem;flex-shrink:0;
+  border:1.5px solid var(--purple-soft);border-radius:999px;background:var(--white);
+  color:var(--purple);font-size:0.68rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:800;
+  padding:0.45rem 0.95rem;transition:all .2s ease;white-space:nowrap;
+}
+.docs-link:hover{background:var(--purple);border-color:var(--purple);color:var(--white)}
+.docs-link .ext{font-size:0.8rem;line-height:1}
 .tabs-label{font-size:0.62rem;letter-spacing:0.26em;text-transform:uppercase;font-weight:700;color:var(--grey);flex-shrink:0}
 .tabs{display:flex;gap:0.4rem;flex-wrap:wrap}
 .tab{
@@ -555,6 +563,7 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
   .tabs-label{display:none}
   .tabs{display:grid;grid-template-columns:1fr 1fr;gap:5px;width:100%}
   .tabs.days{grid-template-columns:1fr 1fr}
+  .docs-link{margin-left:0;width:100%;justify-content:center;padding:0.5rem 0.6rem;font-size:0.64rem}
   .tab{padding:0.42rem 0.5rem;font-size:0.66rem;letter-spacing:0.05em;gap:0.35rem}
 
   main{padding:1.5rem 0.9rem 2.5rem}
@@ -624,6 +633,9 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
   <div class="tabs-inner">
     <span class="tabs-label" id="tabsLabel">Division</span>
     <div class="tabs" id="tabs" role="tablist" aria-label="Divisions"></div>
+    <a class="docs-link" href="https://drive.google.com/drive/folders/18JLNh-FyCjhj04E7M88XoeWsLuqCePZL?usp=drive_link" target="_blank" rel="noopener">
+      Tournament documents <span class="ext" aria-hidden="true">&#8599;</span>
+    </a>
   </div>
 </div>
 
@@ -747,6 +759,7 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
       <a href="/">vanbeachtennis.ca</a>
       <a href="#prizes">Prizes</a>
       <a href="#partners">Partners</a>
+      <a href="https://drive.google.com/drive/folders/18JLNh-FyCjhj04E7M88XoeWsLuqCePZL?usp=drive_link" target="_blank" rel="noopener">Documents</a>
       <a href="#rules">Rules</a>
     </div>
   </div>
