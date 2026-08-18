@@ -41,7 +41,7 @@
 
   --mh:5.6rem;
   --mg:3rem;
-  --navh:58px;
+  --navh:68px;
 }
 
 *{box-sizing:border-box;margin:0;padding:0}
@@ -70,10 +70,10 @@ header.nav{
   height:var(--navh);
 }
 .nav-inner{max-width:1400px;margin:0 auto;height:100%;padding:0 1.5rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
-.brand{display:flex;align-items:center;gap:0.6rem;font-family:"Anton",sans-serif;font-size:0.92rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink)}
-.brand-logo{width:32px;height:32px;border-radius:50%;background:var(--white) center/cover no-repeat;border:1.5px solid var(--line);flex-shrink:0}
+.brand{display:flex;align-items:center;gap:0.7rem;font-family:"Anton",sans-serif;font-size:1rem;letter-spacing:0.06em;text-transform:uppercase;color:var(--ink)}
+.brand-logo{width:48px;height:48px;border-radius:50%;background:var(--white) center/cover no-repeat;border:1.5px solid var(--line);flex-shrink:0}
 .brand-text{line-height:1;display:flex;flex-direction:column;gap:2px}
-.brand-text small{font-family:"Manrope",sans-serif;font-size:0.55rem;letter-spacing:0.2em;font-weight:700;color:var(--purple);text-transform:uppercase}
+.brand-text small{font-family:"Manrope",sans-serif;font-size:0.58rem;letter-spacing:0.2em;font-weight:700;color:var(--purple);text-transform:uppercase}
 .nav-actions{display:flex;align-items:center;gap:0.75rem}
 
 .seg{display:inline-flex;background:var(--paper);border:1.5px solid var(--line);border-radius:999px;padding:3px;gap:2px}
@@ -503,9 +503,10 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
 }
 @media (max-width:760px){
   body{font-size:16px}
-  :root{--navh:54px}
+  :root{--navh:60px}
   .nav-inner{padding:0 0.9rem;gap:0.5rem}
-  .brand-text{font-size:0.8rem}
+  .brand{gap:0.55rem;font-size:0.85rem}
+  .brand-logo{width:40px;height:40px}
   .brand-text small{display:none}
   .seg button{padding:0.4rem 0.7rem;font-size:0.62rem;letter-spacing:0.1em}
   .feed{padding:0.35rem 0.6rem;font-size:0.6rem}
