@@ -4,7 +4,7 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Vancouver Beach Tennis Club — VBT Open 2026, Aug 22–23</title>
-<meta name="description" content="Vancouver's non-profit beach tennis club. The Vancouver Beach Tennis Open 2026 runs August 22–23 at Locarno Beach. Six divisions, $70 per team. Registration open." />
+<meta name="description" content="Vancouver's non-profit beach tennis club. The Vancouver Beach Tennis Open 2026 runs August 22–23 at Locarno Beach. Draws, order of play and live scores for all six divisions." />
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -125,6 +125,14 @@ nav.menu a:hover::after{width:100%}
   white-space:nowrap;
 }
 .btn-nav:hover{background:var(--ink);transform:translateY(-1px)}
+.btn-live{display:inline-flex;align-items:center;gap:0.55rem}
+.btn-live .live-dot{
+  width:8px;height:8px;border-radius:50%;background:var(--coral);flex-shrink:0;
+  animation:pulse 1.8s ease-in-out infinite;
+}
+body.is-live .btn-live{background:var(--coral-deep,#E07F3D)}
+body.is-live .btn-live .live-dot,
+body.is-live .hero-reg-flag .dot{background:var(--white)}
 
 /* ========== HERO ========== */
   .hero{}
@@ -1339,6 +1347,31 @@ body.menu-open{overflow:hidden}
   .brand-logo{width:36px;height:36px}
 }
 
+
+/* ---------- CBTA SANCTIONING ---------- */
+.sanction-bar{
+  display:flex;align-items:center;gap:1.4rem;flex-wrap:wrap;
+  background:var(--purple-deep,#3C096C);color:var(--white);
+  border:2px solid var(--ink);padding:1.35rem 1.75rem;margin-top:1.75rem;
+  transition:transform 0.25s ease, box-shadow 0.25s ease;
+}
+.sanction-bar:hover{transform:translate(-2px,-2px);box-shadow:8px 8px 0 var(--teal)}
+.sanction-bar img{width:56px;height:auto;flex-shrink:0}
+.sanction-bar .sb-text{flex:1;min-width:240px}
+.sanction-bar .sb-lbl{
+  display:block;font-size:0.66rem;letter-spacing:0.26em;text-transform:uppercase;
+  font-weight:800;color:var(--coral);margin-bottom:0.35rem;
+}
+.sanction-bar .sb-body{font-size:0.95rem;font-weight:600;line-height:1.5;color:rgba(255,255,255,0.88)}
+.sanction-bar .sb-go{
+  font-size:0.74rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:800;
+  color:var(--white);border-bottom:2px solid var(--coral);padding-bottom:0.2rem;white-space:nowrap;
+}
+@media (max-width:700px){
+  .sanction-bar{padding:1.15rem 1.15rem;gap:1rem}
+  .sanction-bar img{width:44px}
+  .sanction-bar .sb-body{font-size:0.88rem}
+}
 </style>
 </head>
 <body>
@@ -1362,7 +1395,7 @@ body.menu-open{overflow:hidden}
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
-    <a href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener" class="btn-nav btn-nav-desktop">Register — Open 2026</a>
+    <a href="https://vanbeachtennis.ca/open2026" class="btn-nav btn-nav-desktop btn-live"><span class="live-dot"></span><span data-live="nav">Open 2026 — Draws</span></a>
     <button class="hamburger" id="hamburger" aria-label="Open menu">
       <span></span><span></span><span></span>
     </button>
@@ -1378,7 +1411,7 @@ body.menu-open{overflow:hidden}
       <li><a href="#events">Events</a></li>
       <li><a href="#sponsors">Sponsors</a></li>
       <li><a href="#faq">FAQ</a></li>
-      <li><a href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener" class="mobile-cta">Register — Open 2026 →</a></li>
+      <li><a href="https://vanbeachtennis.ca/open2026" class="mobile-cta"><span data-live="nav">Open 2026 — Draws</span> →</a></li>
     </ul>
     <div class="mobile-menu-foot">
       <a href="mailto:vanbeachtennis@gmail.com">vanbeachtennis@gmail.com</a>
@@ -1415,17 +1448,17 @@ body.menu-open{overflow:hidden}
     </div>
 
     <div class="hero-bottom">
-      <a class="hero-reg" href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener">
-        <div class="hero-reg-flag"><span class="dot"></span>Registration open</div>
+      <a class="hero-reg" href="https://vanbeachtennis.ca/open2026">
+        <div class="hero-reg-flag"><span class="dot"></span><span data-live="flag">Draws are up</span></div>
         <div class="hero-reg-name">VBT Open 2026</div>
         <div class="hero-reg-meta">August 22–23 · Locarno Beach, Vancouver</div>
         <div class="hero-reg-btn">
-          Register your team
+          <span data-live="cta">Groups, order of play &amp; scores</span>
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
         </div>
       </a>
       <p class="hero-sub">
-        A non-profit club bringing one of the world's fastest-growing racket sports to the West Coast. Our first Open lands at Locarno Beach on August 22–23 — six divisions, eight teams each, Advanced and Intermediate.
+        A non-profit club bringing one of the world's fastest-growing racket sports to the West Coast. Entries for our first Open are closed — 43 teams across six divisions. Follow every group, court and result as the weekend plays out.
       </p>
       <div class="hero-actions">
         <a href="#events" class="btn-secondary">Event Details</a>
@@ -1439,11 +1472,11 @@ body.menu-open{overflow:hidden}
   <div class="marquee-track">
     <span>VBT Open 2026 · Aug 22–23</span>
     <span class="alt">Locarno Beach · Vancouver</span>
-    <span>Registration open until Aug 19</span>
+    <span>Draws · Order of play · Live scores</span>
     <span class="alt">See you on the sand</span>
     <span>VBT Open 2026 · Aug 22–23</span>
     <span class="alt">Locarno Beach · Vancouver</span>
-    <span>Registration open until Aug 19</span>
+    <span>Draws · Order of play · Live scores</span>
     <span class="alt">See you on the sand</span>
   </div>
 </div>
@@ -1570,15 +1603,15 @@ body.menu-open{overflow:hidden}
     <div class="open-feature">
       <div class="open-stripe"></div>
       <div class="open-main">
-        <div class="open-flag">Registration open</div>
+        <div class="open-flag"><span data-live="flag">Draws are up</span></div>
         <h3 class="display">Vancouver<br>Beach Tennis<br><span>Open 2026</span></h3>
-        <p class="open-sub">Our first Open. Six divisions, eight teams each, played over two days at Locarno Beach. Advanced and Intermediate levels in every category.</p>
+        <p class="open-sub">Our first Open. Six divisions and 43 teams over two days at Locarno Beach, Advanced and Intermediate in every category. Sanctioned by the Canadian Beach Tennis Association and counting toward the national ranking.</p>
         <div class="open-actions">
-          <a href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener" class="btn-primary">
-            Register your team
+          <a href="https://vanbeachtennis.ca/open2026" class="btn-primary">
+            <span data-live="cta">Groups, order of play &amp; scores</span>
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
           </a>
-          <span class="open-close">Registration closes <strong>Aug 19</strong></span>
+          <span class="open-close">Entries closed · <strong>43 teams</strong> on the sand</span>
         </div>
       </div>
       <div class="open-specs">
@@ -1586,10 +1619,20 @@ body.menu-open{overflow:hidden}
         <div class="spec"><span class="k">Location</span><span class="v">Locarno Beach, Vancouver</span></div>
         <div class="spec"><span class="k">Saturday</span><span class="v">Mixed A/B (Adv) · Mixed C/D (Int)</span></div>
         <div class="spec"><span class="k">Sunday</span><span class="v">Men's &amp; Women's — A/B and C/D</span></div>
-        <div class="spec"><span class="k">Format</span><span class="v">8 teams per division · self-officiated</span></div>
+        <div class="spec"><span class="k">Format</span><span class="v">43 teams · self-officiated</span></div>
         <div class="spec"><span class="k">Net height</span><span class="v">1.70 m, all divisions</span></div>
+        <div class="spec"><span class="k">Sanctioning</span><span class="v">CBTA · counts for the national ranking</span></div>
       </div>
     </div>
+
+    <a class="sanction-bar" href="https://cbta.ca" target="_blank" rel="noopener">
+      <img src="data:image/png;base64,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" alt="Canadian Beach Tennis Association" />
+      <span class="sb-text">
+        <span class="sb-lbl">CBTA sanctioned event</span>
+        <span class="sb-body">The Vancouver Beach Tennis Open 2026 is sanctioned by the Canadian Beach Tennis Association. Results count toward the CBTA national ranking.</span>
+      </span>
+      <span class="sb-go">cbta.ca &rarr;</span>
+    </a>
 
     <div class="events-grid">
       <article class="event-card">
@@ -1603,8 +1646,8 @@ body.menu-open{overflow:hidden}
         <div class="event-num">02 / Flagship</div>
         <div class="date">Aug 22–23 · 2026</div>
         <h3>VBT<br>Open<br>2026</h3>
-        <p class="desc">The marquee weekend and the club's first Open. Six divisions across two days at Advanced and Intermediate levels, with champions and runners-up recognized on the sand. Reserve weekend Aug 29–30.</p>
-        <div class="event-tag">Registration open · 6 divisions</div>
+        <p class="desc">The marquee weekend and the club's first Open. Six divisions across two days at Advanced and Intermediate levels, with medals and partner prizes for champions and runners-up. Reserve weekend Aug 29–30.</p>
+        <div class="event-tag">43 teams · 6 divisions</div>
       </article>
     </div>
 
@@ -1742,17 +1785,17 @@ body.menu-open{overflow:hidden}
     <div class="faq-list">
       <div class="faq-item">
         <div class="faq-q">
-          <span>How do I register for the Open?</span>
+          <span>Where do I follow the Open?</span>
           <span class="icon"></span>
         </div>
-        <div class="faq-a">Registration runs through Zeffy — <a href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener">register your team here</a>. Entry is $70 per team. Registration closes August 19, with full refunds available until August 16 and team transfers accepted until August 19.</div>
+        <div class="faq-a">Everything lives on the <a href="https://vanbeachtennis.ca/open2026">Open 2026 page</a> — group standings, playoff brackets, the full order of play by court and time, and live scores through both days. Entries for 2026 are closed.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">
           <span>What if my division is full?</span>
           <span class="icon"></span>
         </div>
-        <div class="faq-a">Join the waitlist — it's free and it's on the same <a href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener">registration page</a>. Tell us which division you want and we'll contact teams in order as spots open up. A waitlist entry is not a confirmed spot.</div>
+        <div class="faq-a">Entries and the waitlist are both closed for 2026. <a href="https://www.zeffy.com/en-CA/newsletter-form/subscribe-to-get-notified-about-new-events-88933" target="_blank" rel="noopener">Join the club</a> — free in 2026 — and you'll hear about the next event before anyone else.</div>
       </div>
       <div class="faq-item">
         <div class="faq-q">
@@ -1821,9 +1864,9 @@ body.menu-open{overflow:hidden}
     <h2 class="display">
       See you<br>on the <em>sand.</em>
     </h2>
-    <p>The Vancouver Beach Tennis Open is on August 22–23 at Locarno Beach. Six divisions, eight teams each, $70 per team. Registration closes August 19.</p>
-    <a href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener" class="btn-cta-big">
-      Register for the Open
+    <p>The Vancouver Beach Tennis Open is on August 22–23 at Locarno Beach. Six divisions, 43 teams, two days on the sand. Groups, order of play and live scores are all on one page.</p>
+    <a href="https://vanbeachtennis.ca/open2026" class="btn-cta-big">
+      <span data-live="big">Follow the Open 2026</span>
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
     </a>
     <div class="join-alt">Not competing this year? <a href="https://www.zeffy.com/en-CA/newsletter-form/subscribe-to-get-notified-about-new-events-88933" target="_blank" rel="noopener">Join the club</a> — free in 2026.</div>
@@ -1856,9 +1899,10 @@ body.menu-open{overflow:hidden}
       <div class="footer-col">
         <h5>Play</h5>
         <ul>
-          <li><a href="https://www.zeffy.com/en-CA/ticketing/vancouver-beach-tennis-open--2026" target="_blank" rel="noopener">Register — Open 2026</a></li>
+          <li><a href="https://vanbeachtennis.ca/open2026">Open 2026 — draws &amp; results</a></li>
           <li><a href="#events">Open 2026 details</a></li>
           <li><a href="#faq">Rules &amp; format</a></li>
+          <li><a href="https://cbta.ca" target="_blank" rel="noopener">CBTA — national ranking</a></li>
           <li><a href="https://www.zeffy.com/en-CA/newsletter-form/subscribe-to-get-notified-about-new-events-88933" target="_blank" rel="noopener">Join the club</a></li>
         </ul>
       </div>
@@ -1925,5 +1969,31 @@ document.addEventListener('keydown', e => {
 });
 </script>
 
+<script>
+/* One page, three states. The Open 2026 link says the right thing before,
+   during and after the weekend, so nothing here needs editing on the day.
+   Times are Pacific. */
+(function(){
+  var COPY = {
+    before: { nav:"Open 2026 — Draws", flag:"Draws are up",
+              cta:"Groups, order of play &amp; scores", big:"Follow the Open 2026" },
+    live:   { nav:"Open 2026 — Live",  flag:"Live now",
+              cta:"Live scores &amp; what's on court", big:"Watch the Open live" },
+    after:  { nav:"Open 2026 — Results", flag:"Final results",
+              cta:"Final standings &amp; results", big:"See the Open 2026 results" }
+  };
+  function pacific(y,m,d,h){ return Date.UTC(y, m-1, d, h+7); }  /* PDT = UTC-7 */
+  var now = Date.now();
+  var state = now < pacific(2026,8,22,8) ? "before"
+            : now < pacific(2026,8,23,20) ? "live"
+            : "after";
+  var c = COPY[state];
+  document.body.classList.add("is-" + state);
+  document.querySelectorAll("[data-live]").forEach(function(el){
+    var k = el.getAttribute("data-live");
+    if (c[k]) el.innerHTML = c[k];
+  });
+})();
+</script>
 </body>
 </html>
