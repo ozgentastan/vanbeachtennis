@@ -780,7 +780,8 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
           <div class="sr"><span class="k">Group stage</span><span class="v">One set to 6 · tiebreak at 6–6</span></div>
           <div class="sr"><span class="k">Semifinals · 3rd / 4th</span><span class="v">One set to 6 · tiebreak at 6–6</span></div>
           <div class="sr"><span class="k">Finals</span><span class="v">Two sets to 6 · super tiebreak to 10 instead of a third set</span></div>
-          <div class="sr"><span class="k">Repechage · placement</span><span class="v">One set to 4 · tiebreak at 4–4</span></div>
+          <div class="sr"><span class="k">Repechage</span><span class="v">One set to 4 · tiebreak at 4–4</span></div>
+          <div class="sr"><span class="k">Placement</span><span class="v">Mixed C/D one set to 6 · Women's and Men's A/B one set to 4</span></div>
         </div>
       </div>
       <div>
@@ -803,7 +804,7 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
       <div class="fact"><dt>Medals and prizes</dt><dd>Champion and runner-up<small>Six divisions, medals plus sponsor prizes per player. No third-place medal.</small></dd></div>
       <div class="fact"><dt>Walkover</dt><dd>Recorded as 6–0<small>Keeps standings and game difference working.</small></dd></div>
       <div class="fact"><dt>Timing</dt><dd>Set by format<small>20 min for a set to 4, 40 for a set to 6, 65 for a best-of-3 final.</small></dd></div>
-      <div class="fact"><dt>Breaks</dt><dd>10 into the playoffs<small>Group rounds run back to back. 15 minutes before the finals.</small></dd></div>
+      <div class="fact"><dt>Breaks</dt><dd>15 before the finals<small>Group rounds run back to back. 10 minutes into the playoffs.</small></dd></div>
     </dl>
   </div>
 </section>
@@ -917,7 +918,8 @@ const SHOW_TIMES = false;
    draw is never held up by the men's and the other way round. A division left
    out of this list uses all six courts. */
 const COURT_BLOCK = {
-  MXAB: [1,2,3,4],            MXCD: [5,6],
+  /* Saturday shares all six courts and one clock, so Mixed C/D closes out
+     before Mixed A/B — the top division finishes the day. */
   WMCD: [1,2,3], WMAB: [1,2,3],
   MNCD: [4,5,6], MNAB: [4,5,6]
 };
@@ -927,6 +929,23 @@ const COURT_BLOCK = {
    courts free at that moment, placement matches the worst, and group matches
    stay on their division's block so the layout still reads left to right. */
 const COURT_RANK = [3, 4, 2, 5, 1, 6];
+
+/* The one court nobody should see twice in the group stage. */
+const WORST_COURT = 1;
+
+/* Matches nailed to a particular court. Honoured before anything else, so use
+   them sparingly — each pin is one less court the balancer can work with. */
+const COURT_PIN = {
+  "MXCD-P1":     6,
+  "MXCD-P2":     1,
+  "MXAB-A-3v5":  5
+};
+
+/* Placement matches held to a fixed start time (minutes from midnight). */
+const START_PIN = {
+  "MXCD-P1": 13 * 60 + 30,
+  "MXCD-P2": 13 * 60 + 30
+};
 
 const STAGE_BREAK     = 10;   /* group stage into playoffs */
 const FINAL_BREAK     = 15;   /* before the finals */
@@ -969,8 +988,8 @@ const DIVISIONS = [
     "sf": [["A1", "B2"], ["B1", "A2"]],
     "finalSeeds": null,
     "extras": [
-      { "id": "P1", "label": "5th / 6th", "a": "A3", "b": "B3", "fmt": "Set to 4", "kind": "plc" },
-      { "id": "P2", "label": "7th / 8th", "a": "A4", "b": "B4", "fmt": "Set to 4", "kind": "plc" }
+      { "id": "P1", "label": "5th / 6th", "a": "A3", "b": "B3", "fmt": "Set to 6", "kind": "plc" },
+      { "id": "P2", "label": "7th / 8th", "a": "A4", "b": "B4", "fmt": "Set to 6", "kind": "plc" }
     ]
   },
   {
@@ -1382,6 +1401,7 @@ function scheduleDay(day){
   });
 
   assignCourts(out);            /* courts are final before the gaps are filled */
+  fixWorstCourt(out);
   fitSpare(day, out, spare);
 
   /* One shared order for the whole day, so the public page can number the
@@ -1390,6 +1410,30 @@ function scheduleDay(day){
   out.forEach(m => m.round = times.indexOf(m.time));
   out.sort((a, b) => a.time - b.time || a.court - b.court);
   return out;
+}
+
+/* The balancer is greedy and can paint itself into a corner, leaving one pair
+   on the worst court twice. Two matches in the same slot can always swap
+   courts, so walk the day once and trade the repeats away. */
+function fixWorstCourt(plan){
+  /* Court 1 takes exactly one group match per slot. Walk the day in order and,
+     for each slot, hand it to the pair that has been there least — that is
+     enough to stop anyone drawing it twice. */
+  const n = {};
+  const slots = [...new Set(plan.filter(m => m.stage === 0).map(m => m.time))].sort((a, b) => a - b);
+  slots.forEach(t => {
+    const inSlot = plan.filter(m => m.stage === 0 && m.time === t);
+    const cur = inSlot.find(m => m.court === WORST_COURT);
+    if (!cur) return;
+    const bump = m => m.tok.forEach(k => n[k] = (n[k] || 0) + 1);
+    if (COURT_PIN[cur.id]){ bump(cur); return; }
+    const load = m => m.tok.reduce((a, k) => a + (n[k] || 0), 0);
+    const pick = inSlot
+      .filter(m => !COURT_PIN[m.id] && m.end === cur.end)
+      .sort((a, b) => load(a) - load(b) || a.seq - b.seq)[0] || cur;
+    if (pick !== cur){ const c = pick.court; pick.court = WORST_COURT; cur.court = c; }
+    bump(pick);
+  });
 }
 
 /* Drop each placement match into the earliest gap that fits it. */
@@ -1401,11 +1445,13 @@ function fitSpare(day, plan, spare){
     const groupEnd = Math.max(...plan.filter(x => x.d === m.d && x.stage === 0).map(x => x.end), DAY_START[day]);
     /* One court, free for the whole slot. Worst courts first — these matches
        decide standings, not medals. */
-    const worstFirst = [...COURT_RANK].reverse();
+    const worstFirst = COURT_PIN[m.id] ? [COURT_PIN[m.id]] : [...COURT_RANK].reverse();
     const courtFor = t => worstFirst.find(c =>
       plan.every(x => x.court !== c || t + mins <= x.time || t >= x.end));
-    let t = groupEnd, court = courtFor(t);
-    for (let guard = 0; guard < 400 && !court; guard++){ t += 5; court = courtFor(t); }
+    let t = START_PIN[m.id] !== undefined ? START_PIN[m.id] : groupEnd;
+    let court = courtFor(t);
+    if (START_PIN[m.id] === undefined)
+      for (let guard = 0; guard < 400 && !court; guard++){ t += 5; court = courtFor(t); }
     plan.push(Object.assign({}, m, { court: court || 1, round: 0, time: t, end: t + mins, mins }));
   });
 }
@@ -1437,8 +1483,16 @@ function assignCourts(plan){
     if (POOR(c)) poor[tok] = (poor[tok] || 0) + 1;
   };
 
-  [...plan].sort((a, b) => weight(a) - weight(b) || a.time - b.time || a.seq - b.seq)
+  [...plan].sort((a, b) =>
+      (COURT_PIN[a.id] ? 0 : 1) - (COURT_PIN[b.id] ? 0 : 1)
+      || weight(a) - weight(b) || a.time - b.time || a.seq - b.seq)
     .forEach(m => {
+      if (COURT_PIN[m.id] && freeAt(COURT_PIN[m.id], m)){
+        m.court = COURT_PIN[m.id];
+        booked[m.court].push([m.time, m.end]);
+        if (weight(m) === 4) m.tok.forEach(t => note(t, m.court));
+        return;
+      }
       const block = COURT_BLOCK[m.d.code] || COURT_RANK;
       const w = weight(m);
       let court;
@@ -1447,7 +1501,14 @@ function assignCourts(plan){
         /* group matches are not tied to the block — courts are handed out
            after the times are fixed, so any free court works and spreading the
            pairs around matters more than keeping the halves tidy */
-        const pool = COURT_RANK.filter(c => freeAt(c, m));
+        let pool = COURT_RANK.filter(c => freeAt(c, m));
+        /* Hard rule: a pair goes on the worst court at most once in the group
+           stage. Only broken if there is genuinely nowhere else free. */
+        const usedWorst = m.tok.some(t => (seen[t] || {})[WORST_COURT]);
+        if (usedWorst){
+          const alt = pool.filter(c => c !== WORST_COURT);
+          if (alt.length) pool = alt;
+        }
         court = pool.map(c => ({
           c,
           poorSum: m.tok.reduce((a, t) => a + (poor[t] || 0), 0) + (POOR(c) ? 2 : 0),
