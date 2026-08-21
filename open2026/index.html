@@ -434,6 +434,57 @@ td.diff-neg{color:var(--grey)}
   color:var(--grey);font-weight:600;font-size:0.85rem;
 }
 
+/* ---------- MATCH POPUP ---------- */
+.cell,.crow,.result-row[data-match]{cursor:pointer}
+.cell:hover,.crow:hover{border-color:var(--purple-soft)}
+.result-row[data-match]:hover{background:var(--paper)}
+.modal-back{
+  position:fixed;inset:0;z-index:200;background:rgba(15,14,16,0.55);
+  display:grid;place-items:center;padding:1.2rem;
+}
+.modal-back[hidden]{display:none}
+.modal{
+  background:var(--white);border-radius:6px;width:min(30rem,100%);
+  max-height:90vh;overflow:auto;box-shadow:0 24px 60px rgba(0,0,0,0.3);
+}
+.modal-head{
+  background:var(--ink);color:var(--white);padding:0.85rem 1.1rem;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem;
+}
+.modal-head .t{font-family:"Anton",sans-serif;font-size:1.05rem;letter-spacing:0.04em;text-transform:uppercase}
+.modal-head button{
+  background:none;border:none;color:rgba(255,255,255,0.75);font-size:1.4rem;line-height:1;
+  cursor:pointer;padding:0 0.2rem;
+}
+.modal-head button:hover{color:var(--white)}
+.modal-body{padding:1.1rem}
+.m-teams{border:1.5px solid var(--line);border-radius:4px;overflow:hidden;margin-bottom:1rem}
+.m-team{
+  display:grid;grid-template-columns:2.6rem 1fr auto;gap:0.7rem;align-items:center;
+  padding:0.7rem 0.9rem;font-size:0.95rem;font-weight:700;
+}
+.m-team + .m-team{border-top:1px solid var(--line)}
+.m-team .src{font-size:0.6rem;letter-spacing:0.08em;text-transform:uppercase;color:var(--grey);font-weight:800}
+.m-team .sc{font-variant-numeric:tabular-nums;font-weight:800;color:var(--grey)}
+.m-team.won{background:#F8F4FD;color:var(--ink)}
+.m-team.won .sc{color:var(--purple)}
+.m-team.tbd{color:var(--grey);font-weight:600}
+.m-rows{border-top:1px solid var(--line)}
+.m-row{
+  display:grid;grid-template-columns:8.5rem 1fr;gap:0.8rem;
+  padding:0.5rem 0;border-bottom:1px solid var(--line);font-size:0.84rem;
+}
+.m-row:last-child{border-bottom:none}
+.m-row dt{font-size:0.6rem;letter-spacing:0.16em;text-transform:uppercase;font-weight:800;color:var(--grey);padding-top:0.15rem}
+.m-row dd{font-weight:600;color:var(--ink)}
+.m-cta{
+  display:block;margin-top:1rem;text-align:center;background:var(--purple);color:var(--white);
+  border-radius:999px;padding:0.7rem 1rem;font-size:0.72rem;letter-spacing:0.16em;
+  text-transform:uppercase;font-weight:800;
+}
+.m-cta:hover{background:var(--purple-deep)}
+.m-note{margin-top:0.6rem;font-size:0.72rem;color:var(--grey);font-weight:600;text-align:center}
+
 /* ---------- PRIZES ---------- */
 .prizes{border-top:1px solid var(--line);background:var(--white);padding:2.75rem 1.5rem}
 .prizes-inner{max-width:1400px;margin:0 auto}
@@ -669,6 +720,13 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
 
 <main id="main"></main>
 
+<div class="modal-back" id="modalBack" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+    <div class="modal-head"><span class="t" id="modalTitle"></span><button type="button" id="modalClose" aria-label="Close">&times;</button></div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
 <section class="prizes" id="prizes">
   <div class="prizes-inner">
     <h2>Prizes</h2>
@@ -744,7 +802,7 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
       <div class="fact"><dt>Repechage</dt><dd>Men's and Women's A/B<small>The four teams that miss out play off for the last semifinal place.</small></dd></div>
       <div class="fact"><dt>Medals and prizes</dt><dd>Champion and runner-up<small>Six divisions, medals plus sponsor prizes per player. No third-place medal.</small></dd></div>
       <div class="fact"><dt>Walkover</dt><dd>Recorded as 6–0<small>Keeps standings and game difference working.</small></dd></div>
-      <div class="fact"><dt>Timing</dt><dd>Set by format<small>20 min for a set to 4, 35 for a set to 6, 65 for a best-of-3 final.</small></dd></div>
+      <div class="fact"><dt>Timing</dt><dd>Set by format<small>20 min for a set to 4, 40 for a set to 6, 65 for a best-of-3 final.</small></dd></div>
       <div class="fact"><dt>Breaks</dt><dd>10 into the playoffs<small>Group rounds run back to back. 15 minutes before the finals.</small></dd></div>
     </dl>
   </div>
@@ -817,6 +875,11 @@ const FEEDS = [
   "https://docs.google.com/spreadsheets/d/e/2PACX-1vSuZtnQDpfqETQRb9od5rqdXD0U2oIQuCwV-ix12v4Qz2Pw4zXuBpQ57oUoiFgyhHIeWzIDiEDYvF1D/pub?gid=1862976694&single=true&output=csv"
 ].filter(Boolean);
 
+/* Prefilled score form. Used by the "Enter score" button in the match popup,
+   which only appears on the director's build. Leave FORM_URL empty to hide it. */
+const FORM_URL   = "https://docs.google.com/forms/d/e/1FAIpQLSc8zgXQBi691tLS_ZaNsMfZ5iNiTNguthFdn5UzKnRAyxHYXw/viewform";
+const FORM_FIELD = "entry.1392954659";
+
 const REFRESH_SECONDS = 60;
 const UPDATED = "Draw published 20 August 2026";
 
@@ -848,6 +911,22 @@ const minutesFor      = fmt => MINUTES[fmt] || DEFAULT_MINUTES;
      false -> the public page: the first serve of the day, then order of play
               only, so nobody holds a court waiting for a printed time. */
 const SHOW_TIMES = false;
+
+/* Which courts a division may use. Divisions that share a court block share a
+   round clock; divisions on different blocks run independently, so the women's
+   draw is never held up by the men's and the other way round. A division left
+   out of this list uses all six courts. */
+const COURT_BLOCK = {
+  MXAB: [1,2,3,4],            MXCD: [5,6],
+  WMCD: [1,2,3], WMAB: [1,2,3],
+  MNCD: [4,5,6], MNAB: [4,5,6]
+};
+
+/* Courts ranked best to worst. 3 and 4 are the show courts in the middle of
+   the row; 1 and 6 are the ends. Finals and semifinals are given the best
+   courts free at that moment, placement matches the worst, and group matches
+   stay on their division's block so the layout still reads left to right. */
+const COURT_RANK = [3, 4, 2, 5, 1, 6];
 
 const STAGE_BREAK     = 10;   /* group stage into playoffs */
 const FINAL_BREAK     = 15;   /* before the finals */
@@ -1253,9 +1332,11 @@ function buildDayMatches(day){
       if (x.id === "RPF" || x.id === "RPL") deps.push(mid(d,"RP1"), mid(d,"RP2"));
       add(x.id, x.label, x.a, x.b, x.fmt, 1, deps);
     });
-    /* Placement matches decide standings but gate nothing, so they are the
-       last thing to claim a court — semifinals and finals go first. */
-    d.extras.filter(x => x.kind === "plc").forEach(x => add(x.id, x.label, x.a, x.b, x.fmt, 5, groupIds.slice()));
+    /* Placement matches only need the group stage finished, so they are ready
+       as early as the semifinals. They queue behind the semifinals for a court
+       but ahead of everything else, which keeps these short matches out of the
+       tail of the day. */
+    d.extras.filter(x => x.kind === "plc").forEach(x => add(x.id, x.label, x.a, x.b, x.fmt, 3, groupIds.slice()));
     if (d.sf){
       /* Both semifinals share the same dependencies so they always land in
          the same slot — no team waits an hour for the other half of the draw. */
@@ -1267,9 +1348,9 @@ function buildDayMatches(day){
       d.sf.forEach((p, i) => add("SF" + (i+1), "Semifinal " + (i+1), p[0], p[1], "Set to 6", 2, sfDeps.slice()));
     }
     d.extras.filter(x => x.kind === "third")
-      .forEach(x => add(x.id, x.label, x.a, x.b, x.fmt, 3, [mid(d,"SF1"), mid(d,"SF2")]));
+      .forEach(x => add(x.id, x.label, x.a, x.b, x.fmt, 4, [mid(d,"SF1"), mid(d,"SF2")]));
     const fp = pairOf(d, "F");
-    add("F", "Final", fp[0], fp[1], "Best of 3", 4, d.sf ? [mid(d,"SF1"), mid(d,"SF2")] : groupIds.slice());
+    add("F", "Final", fp[0], fp[1], "Best of 3", 5, d.sf ? [mid(d,"SF1"), mid(d,"SF2")] : groupIds.slice());
   });
   return list;
 }
@@ -1279,13 +1360,124 @@ function buildDayMatches(day){
    moment its dependencies are done and neither team is already on court.
    Match length comes from the format, so short repechage sets pack tightly
    and long finals get the room they need. */
+/* One track = the divisions sharing a court block, with their own round clock. */
+function trackOf(code){
+  const b = COURT_BLOCK[code];
+  return b ? b.join(",") : "all";
+}
 function scheduleDay(day){
-  const ms = buildDayMatches(day);
+  const all = buildDayMatches(day);
+  /* Placement matches are short, decide no one's progress and belong to no
+     round. They are slotted in afterwards, wherever a court frees up first. */
+  const main = all.filter(m => m.stage !== 3);
+  const spare = all.filter(m => m.stage === 3);
+
+  const tracks = {};
+  main.forEach(m => (tracks[trackOf(m.d.code)] = tracks[trackOf(m.d.code)] || []).push(m));
+  const out = [];
+  Object.keys(tracks).forEach(key => {
+    const courts = key === "all" ? Array.from({length: COURTS}, (_, i) => i + 1)
+                                 : key.split(",").map(Number);
+    out.push(...scheduleTrack(day, tracks[key], courts));
+  });
+
+  assignCourts(out);            /* courts are final before the gaps are filled */
+  fitSpare(day, out, spare);
+
+  /* One shared order for the whole day, so the public page can number the
+     rows even though the two halves of the beach run on their own clocks. */
+  const times = [...new Set(out.map(m => m.time))].sort((a, b) => a - b);
+  out.forEach(m => m.round = times.indexOf(m.time));
+  out.sort((a, b) => a.time - b.time || a.court - b.court);
+  return out;
+}
+
+/* Drop each placement match into the earliest gap that fits it. */
+function fitSpare(day, plan, spare){
+  spare.sort((a, b) => a.d.code.localeCompare(b.d.code) || a.seq - b.seq);
+  spare.forEach(m => {
+    const mins = minutesFor(m.fmt);
+    /* not before that division's group stage is done */
+    const groupEnd = Math.max(...plan.filter(x => x.d === m.d && x.stage === 0).map(x => x.end), DAY_START[day]);
+    /* One court, free for the whole slot. Worst courts first — these matches
+       decide standings, not medals. */
+    const worstFirst = [...COURT_RANK].reverse();
+    const courtFor = t => worstFirst.find(c =>
+      plan.every(x => x.court !== c || t + mins <= x.time || t >= x.end));
+    let t = groupEnd, court = courtFor(t);
+    for (let guard = 0; guard < 400 && !court; guard++){ t += 5; court = courtFor(t); }
+    plan.push(Object.assign({}, m, { court: court || 1, round: 0, time: t, end: t + mins, mins }));
+  });
+}
+
+/* Times are already fixed, so moving a match between courts can never create a
+   clash as long as the court is free for its whole slot. */
+function assignCourts(plan){
+  const rank = {}; COURT_RANK.forEach((c, i) => rank[c] = i);
+  const weight = m => m.stage === 5 ? 0        /* final        */
+                    : m.stage === 2 ? 1        /* semifinal    */
+                    : m.stage === 4 ? 2        /* 3rd / 4th    */
+                    : m.stage === 1 ? 3        /* repechage    */
+                    : m.stage === 0 ? 4        /* group stage  */
+                    :                 5;       /* placement    */
+  const booked = {};                            /* court -> [[start,end], …] */
+  for (let c = 1; c <= COURTS; c++) booked[c] = [];
+  const freeAt = (c, m) => booked[c].every(([s, e]) => m.end <= s || m.time >= e);
+
+  /* Through the group stage nobody should be parked on court 1 or 6 all
+     morning, so each match goes to the free court that spreads its two teams
+     around: courts they have not used yet first, then whichever keeps their
+     share of the poor courts closest to everyone else's. */
+  const POOR = c => c === 1 || c === 6;
+  const seen = {};    /* team token -> { court: times played } */
+  const poor = {};    /* team token -> matches already on court 1 or 6 */
+  const note = (tok, c) => {
+    seen[tok] = seen[tok] || {};
+    seen[tok][c] = (seen[tok][c] || 0) + 1;
+    if (POOR(c)) poor[tok] = (poor[tok] || 0) + 1;
+  };
+
+  [...plan].sort((a, b) => weight(a) - weight(b) || a.time - b.time || a.seq - b.seq)
+    .forEach(m => {
+      const block = COURT_BLOCK[m.d.code] || COURT_RANK;
+      const w = weight(m);
+      let court;
+
+      if (w === 4){                                   /* group stage */
+        /* group matches are not tied to the block — courts are handed out
+           after the times are fixed, so any free court works and spreading the
+           pairs around matters more than keeping the halves tidy */
+        const pool = COURT_RANK.filter(c => freeAt(c, m));
+        court = pool.map(c => ({
+          c,
+          poorSum: m.tok.reduce((a, t) => a + (poor[t] || 0), 0) + (POOR(c) ? 2 : 0),
+          repeats: m.tok.reduce((a, t) => a + ((seen[t] || {})[c] || 0), 0)
+        })).sort((x, y) => x.repeats - y.repeats || x.poorSum - y.poorSum || rank[x.c] - rank[y.c])
+          .map(o => o.c)[0];
+      } else {
+        const order = w <= 2 ? COURT_RANK                       /* best courts free  */
+                    : w === 5 ? [...COURT_RANK].reverse()       /* worst courts free */
+                    : [...block].sort((x, y) => rank[x] - rank[y]).concat(COURT_RANK);
+        court = order.find(x => freeAt(x, m));
+      }
+
+      m.court = court || COURT_RANK.find(x => freeAt(x, m)) || m.court || 1;
+      booked[m.court].push([m.time, m.end]);
+      if (w === 4) m.tok.forEach(t => note(t, m.court));
+    });
+}
+
+function scheduleTrack(day, ms, courts){
   const total = {}, done = {};
   ms.forEach(m => total[m.d.code] = (total[m.d.code] || 0) + 1);
+  /* Groups inside a division are independent too — track each one separately so
+     the courts are shared between them and both finish on the same round. */
+  const gKey  = m => m.stage === 0 ? m.d.code + "|" + m.id.split("-")[1] : null;
+  const gTot = {}, gDone = {};
+  ms.forEach(m => { const k = gKey(m); if (k) gTot[k] = (gTot[k] || 0) + 1; });
+  const gShare = m => { const k = gKey(m); return k ? (gDone[k] || 0) / gTot[k] : 0; };
 
   /* --- pass 1: put every match in a round ------------------------------- */
-  /* A nominal clock, used only to work out which round a division may enter. */
   const nominal = r => DAY_START[day] + r * DEFAULT_MINUTES;
   const firstRoundFor = code => {
     const t = NOT_BEFORE[code];
@@ -1302,7 +1494,7 @@ function scheduleDay(day){
   for (let r = 0; r < 60 && left.size; r++){
     busyCourts[r] = busyCourts[r] || new Set();
     busyTeams[r]  = busyTeams[r]  || new Set();
-    while (busyCourts[r].size < COURTS){
+    while (busyCourts[r].size < courts.length){
       const cand = [...left].map(id => byId.get(id)).filter(m =>
         r >= firstRoundFor(m.d.code)
         && m.deps.every(id => roundOf.has(id) && roundOf.get(id) < r)
@@ -1311,14 +1503,16 @@ function scheduleDay(day){
       cand.sort((x, y) =>
         (PRIORITY[x.d.code]||1) - (PRIORITY[y.d.code]||1)
         || x.stage - y.stage
+        || gShare(x) - gShare(y)
         || ((done[x.d.code]||0)/total[x.d.code]) - ((done[y.d.code]||0)/total[y.d.code])
         || x.seq - y.seq);
       const m = cand[0];
-      let court = 1; while (busyCourts[r].has(court)) court++;
+      const court = courts.find(c => !busyCourts[r].has(c));
       busyCourts[r].add(court);
       m.tok.forEach(tok => busyTeams[r].add(tok));
       roundOf.set(m.id, r); courtOf.set(m.id, court);
       done[m.d.code] = (done[m.d.code] || 0) + 1;
+      const gk = gKey(m); if (gk) gDone[gk] = (gDone[gk] || 0) + 1;
       left.delete(m.id);
     }
   }
@@ -1328,32 +1522,30 @@ function scheduleDay(day){
   const lenOf = Array.from({length: rounds}, () => 0);
   ms.forEach(m => { const r = roundOf.get(m.id);
                     if (r !== undefined) lenOf[r] = Math.max(lenOf[r], minutesFor(m.fmt)); });
-  /* what each round holds, so the breaks can be put in the right places */
+
   const hasGroup = Array.from({length: rounds}, () => false);
   const hasPlay  = Array.from({length: rounds}, () => false);
   const hasFinal = Array.from({length: rounds}, () => false);
   ms.forEach(m => { const r = roundOf.get(m.id); if (r === undefined) return;
     if (m.stage === 0) hasGroup[r] = true; else hasPlay[r] = true;
-    if (m.stage === 4) hasFinal[r] = true; });
+    if (m.stage === 5) hasFinal[r] = true; });
 
   const startOf = [];
   let t = DAY_START[day];
   for (let r = 0; r < rounds; r++){
     if (r > 0){
       t += lenOf[r-1];
-      if (hasPlay[r] && hasGroup[r-1]) t += STAGE_BREAK;   /* group -> playoffs */
-      if (hasFinal[r] && !hasFinal[r-1]) t += FINAL_BREAK; /* before the finals */
+      if (hasPlay[r] && hasGroup[r-1]) t += STAGE_BREAK;
+      if (hasFinal[r] && !hasFinal[r-1]) t += FINAL_BREAK;
     }
     startOf[r] = t;
   }
 
-  const placed = ms.filter(m => roundOf.has(m.id)).map(m => {
+  return ms.filter(m => roundOf.has(m.id)).map(m => {
     const r = roundOf.get(m.id), mins = minutesFor(m.fmt);
     return Object.assign({}, m, { court: courtOf.get(m.id), round: r,
                                   time: startOf[r], end: startOf[r] + mins, mins });
   });
-  placed.sort((a, b) => a.time - b.time || a.court - b.court);
-  return placed;
 }
 
 function sideName(m, s){
@@ -1431,7 +1623,7 @@ function groupCard(d, g){
     const o = ORDER.get(gid(d, g.L, pair[0], pair[1]));
     const [a, b] = (o && o.sides && o.sides[0].t === "g") ? [o.sides[0].i, o.sides[1].i] : pair;
     const s = fxScore(d, g.L, a, b);
-    return `<div class="result-row">
+    return `<div class="result-row" data-match="${esc(gid(d, g.L, a, b))}">
       <span class="rt r ${s && s[0] > s[1] ? "win" : ""}">${esc(teams[a])}</span>
       <span class="score ${s ? "" : "pending"}">${s ? s[0] + "–" + s[1] : "vs"}</span>
       <span class="rt ${s && s[1] > s[0] ? "win" : ""}">${esc(teams[b])}</span></div>`;
@@ -1576,7 +1768,7 @@ function cellHTML(m, style){
   const when = SHOW_TIMES ? `${hhmm(m.time)}&ndash;${hhmm(m.end)}` : `Round ${m.round + 1}`;
   const meta = short ? ""
     : `<div class="cell-stage">${when} · ${esc(m.title)}<span class="mid">${esc(m.id)}</span></div>`;
-  return `<div class="cell ${short ? "short" : ""} ${m.state === "done" ? "done" : ""} ${m.state === "now" ? "live" : ""}"${style ? ` style="${style}"` : ""}>
+  return `<div class="cell ${short ? "short" : ""} ${m.state === "done" ? "done" : ""} ${m.state === "now" ? "live" : ""}" data-match="${esc(m.id)}"${style ? ` style="${style}"` : ""}>
     <div class="cell-top"><span class="tag ${fam(m.d.code)}">${esc(m.d.name)}</span>${stateTag(m)}</div>
     ${matchLine(m, 0)}${matchLine(m, 1)}
     ${meta}</div>`;
@@ -1686,7 +1878,7 @@ function renderSchedule(){
     const row = plan.filter(m => m.round === rd && passes(m)).sort((a,b) => a.court - b.court);
     if (!row.length) return;
     list += `<div class="cslot"><h4>${SHOW_TIMES ? hhmm(t) : "Round " + (rd + 1)}</h4>` +
-      row.map(m => `<div class="crow ${m.state === "done" ? "done" : ""} ${m.state === "now" ? "live" : ""}">
+      row.map(m => `<div class="crow ${m.state === "done" ? "done" : ""} ${m.state === "now" ? "live" : ""}" data-match="${esc(m.id)}">
         <div class="crow-top"><span class="courtbadge">Court ${m.court}</span>
           <span class="tag ${fam(m.d.code)}">${esc(m.d.name)}</span>${stateTag(m)}</div>
         ${matchLine(m, 0)}${matchLine(m, 1)}
@@ -1713,6 +1905,75 @@ function renderSchedule(){
     ${filters}
     ${shown.length ? `<div class="gridwrap">${grid}</div><div class="clist">${list}</div>` : none}`;
 }
+
+/* ---------- match popup ---------- */
+/* Everything shown here is already on the page; the popup just gathers it in
+   one place, which is what you want when you are standing on the sand. */
+function findMatch(id){
+  for (const day of ["Saturday","Sunday"]){
+    const hit = scheduleDay(day).find(m => m.id === id);
+    if (hit) return { m: hit, day };
+  }
+  return null;
+}
+function scoreLine(m){
+  const sc = matchScore(m);
+  return sc ? sc.txt : ["", ""];
+}
+function formLink(m){
+  if (!FORM_URL) return null;
+  const n1 = sideName(m, m.sides[0]), n2 = sideName(m, m.sides[1]);
+  if (!n1 || !n2) return null;                 /* the form needs real names */
+  const label = `${m.id} · ${m.fmt} · ${n1} vs ${n2}`;
+  const q = encodeURIComponent(label).replace(/%20/g, "+").replace(/%2F/g, "/");
+  return `${FORM_URL}?usp=pp_url&${FORM_FIELD}=${q}`;
+}
+function openMatch(id){
+  const found = findMatch(id);
+  if (!found) return;
+  const { m, day } = found;
+  const plan = planDay(day).plan;
+  const live = plan.find(x => x.id === m.id) || m;
+  const sc = scoreLine(live);
+  const won = matchScore(live) ? matchScore(live).w : null;
+
+  const team = i => {
+    const name = sideName(live, live.sides[i]);
+    return `<div class="m-team ${name ? "" : "tbd"} ${won === i ? "won" : ""}">
+      <span class="src">${esc(sideRef(live, live.sides[i]))}</span>
+      <span>${name ? esc(name) : "To be decided"}</span>
+      <span class="sc">${sc[i] || "&ndash;"}</span></div>`;
+  };
+  const state = live.state === "done" ? "Final score in"
+              : live.state === "now"  ? "On court now"
+              : "Not started";
+  const link = SHOW_TIMES ? formLink(live) : null;
+
+  document.getElementById("modalTitle").textContent = live.d.name;
+  document.getElementById("modalBody").innerHTML =
+    `<div class="m-teams">${team(0)}${team(1)}</div>
+     <dl class="m-rows">
+       <div class="m-row"><dt>Stage</dt><dd>${esc(live.title)}</dd></div>
+       <div class="m-row"><dt>Format</dt><dd>${esc(live.fmt)}</dd></div>
+       <div class="m-row"><dt>Day</dt><dd>${esc(DAY_DATE[day])}</dd></div>
+       <div class="m-row"><dt>Court</dt><dd>Court ${live.court}</dd></div>
+       ${SHOW_TIMES
+         ? `<div class="m-row"><dt>Time</dt><dd>${hhmm(live.time)}&ndash;${hhmm(live.end)} · ${live.mins} min</dd></div>`
+         : `<div class="m-row"><dt>Order</dt><dd>Round ${live.round + 1} of the day</dd></div>`}
+       <div class="m-row"><dt>Status</dt><dd>${state}</dd></div>
+       <div class="m-row"><dt>Match ID</dt><dd>${esc(live.id)}</dd></div>
+     </dl>
+     ${link ? `<a class="m-cta" href="${link}" target="_blank" rel="noopener">Enter score</a>
+               <p class="m-note">Opens the score form with this match already selected.</p>` : ""}`;
+  document.getElementById("modalBack").hidden = false;
+}
+function closeMatch(){ document.getElementById("modalBack").hidden = true; }
+
+document.getElementById("modalClose").addEventListener("click", closeMatch);
+document.getElementById("modalBack").addEventListener("click", e => {
+  if (e.target.id === "modalBack") closeMatch();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeMatch(); });
 
 /* ---------- view plumbing ---------- */
 function buildTabs(){
@@ -1756,6 +2017,8 @@ document.getElementById("tabs").addEventListener("click", e => {
   paint();
 });
 document.getElementById("main").addEventListener("click", e => {
+  const hit = e.target.closest("[data-match]");
+  if (hit){ openMatch(hit.dataset.match); return; }
   const t = e.target.closest(".block-toggle");
   if (t){
     const p = document.getElementById(t.getAttribute("aria-controls"));
