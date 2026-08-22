@@ -1619,15 +1619,30 @@ function sideName(m, s){
 function sideRef(m, s){
   return s.t === "g" ? (m.d.single ? "" : s.L) + (s.i + 1) : label(m.d, s.ref);
 }
+/* A stored score always reads in match-id order — MXAB-A-1v4 means seed 1's
+   games first. The grid may show the pair the other way round, because the
+   order of play can put seed 4 on the left. Flip the score to match the sides
+   actually being displayed, or the winner is shown losing. */
+function scoreFlipped(m){
+  const a = m.sides[0], b = m.sides[1];
+  return a && b && a.t === "g" && b.t === "g" && a.i > b.i;
+}
 function matchScore(m){
+  const flip = scoreFlipped(m);
   if (m.id.endsWith("-F")){
     const sets = splitSets(LIVE[m.id]);
     if (!sets.length) return null;
     const w = sets.reduce((a, s) => s[0] > s[1] ? [a[0]+1, a[1]] : [a[0], a[1]+1], [0,0]);
-    return { txt: [sets.map(s=>s[0]).join(" "), sets.map(s=>s[1]).join(" ")], w: w[0] > w[1] ? 0 : 1 };
+    const t = [sets.map(s=>s[0]).join(" "), sets.map(s=>s[1]).join(" ")];
+    const win = w[0] > w[1] ? 0 : 1;
+    return flip ? { txt: [t[1], t[0]], w: 1 - win } : { txt: t, w: win };
   }
   const s = parseSet(LIVE[m.id]);
-  return s ? { txt: [String(s[0]), String(s[1])], w: s[0] > s[1] ? 0 : 1 } : null;
+  if (!s) return null;
+  const win = s[0] > s[1] ? 0 : 1;
+  return flip
+    ? { txt: [String(s[1]), String(s[0])], w: 1 - win }
+    : { txt: [String(s[0]), String(s[1])], w: win };
 }
 
 /* Both views read the order of play from the same place, so a group's match
