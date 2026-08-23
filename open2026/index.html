@@ -212,7 +212,10 @@ table{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums}
 thead th{
   font-size:0.6rem;letter-spacing:0.14em;text-transform:uppercase;font-weight:700;
   color:var(--grey);text-align:right;padding:0.65rem 0.5rem;border-bottom:1px solid var(--line);
+  white-space:nowrap;
 }
+tbody td{white-space:nowrap}
+tbody td:nth-child(2){white-space:normal}
 thead th:first-child{text-align:left;padding-left:1.1rem;width:2.2rem}
 thead th:nth-child(2){text-align:left}
 thead th:last-child{padding-right:1.1rem}
@@ -651,6 +654,17 @@ footer{background:var(--ink);color:var(--white);padding:2.5rem 1.5rem}
   .scoretable .sr{grid-template-columns:1fr;gap:0.15rem}
   thead th:nth-child(n+5),tbody td:nth-child(n+5){display:none}
   thead th:last-child,tbody td:last-child{display:table-cell}
+  /* the phone shows # · Team · P · W–L · Pts — give the numbers room so the
+     header cannot wrap and the team name takes what is left */
+  thead th,tbody td{padding-left:0.3rem;padding-right:0.3rem}
+  thead th:first-child,tbody td:first-child{padding-left:0.75rem;width:1.6rem}
+  thead th:nth-child(3),tbody td:nth-child(3){width:1.7rem}
+  thead th:nth-child(4),tbody td:nth-child(4){width:2.9rem}
+  thead th:last-child,tbody td:last-child{width:2.2rem;padding-right:0.75rem}
+  thead th:letter-spacing{letter-spacing:0.1em}
+  thead th{letter-spacing:0.08em;font-size:0.56rem}
+  tbody td{font-size:0.84rem}
+  tbody td:nth-child(2){font-size:0.82rem;line-height:1.25}
   .block-toggle .hint{display:none}
 
   .courts{grid-template-columns:1fr 1fr;gap:0.5rem}
